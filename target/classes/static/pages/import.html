@@ -1,0 +1,55 @@
+<div class="container" ng-controller="fileUploadController">
+	<h1>Importar Arquivos</h1>
+
+	<br />
+	<hr style="border-top: 1px solid #ccc;" />
+
+	<p>{{ message }}</p>
+
+	<ul ng-hide="!successMessages" class="success">
+		<li ng-repeat="message in successMessages">{{message}}</li>
+	</ul>
+
+	<!-- Output the list of error messages if any. -->
+	<ul ng-hide="!errorMessages" class="error">
+		<li ng-repeat="message in errorMessages">{{message}}</li>
+	</ul>
+
+	<div class="form-group">
+		<label for="dateTime">Selecione a Data:</label> <input type="date"
+			ng-model="dateTime" class="form-control" style="width: 160px;"
+			ng-required="true" /> <input type="hidden"
+			datepicker-popup="yyyy-MM-dd" ng-model="dateTime" ng-required="true" />
+	</div>
+
+	<hr style="border-top: 1px solid #ccc;" />
+	<br />
+	<div class="form-group">
+		<label for="fileType">Selecione o tipo do arquivo:</label> <select
+			ng-model="fileType"
+			ng-options="value.id as value.name for value in fileTypes"
+			class="form-control" style="width: 180px;" ng-required="true"></select>
+	</div>
+
+	<hr style="border-top: 1px solid #ccc;" />
+	<br />
+	<div class="form-group">
+		<label for="fileType">Selecione o arquivo:</label><input type="file"
+			file-model="myFile" placeholder="Arquivo" ng-required="true"
+			autofocus /><br />
+	</div>
+	<hr style="border-top: 1px solid #ccc;" />
+	<br />
+	<div class="form-group">
+		<button ng-hide="loading == true" ng-click="uploadFile()"
+			class="btn btn-primary">Importar</button>
+		<br />
+		<img id="mySpinner" src="img/loading.gif" ng-show="loading == true" />
+	</div>
+	<br />
+	<div>
+		<a href="ftp://177.73.233.187/pagamentos/"
+			target="_blank">Baixar arquivos</a>
+	</div>
+	<br />
+</div>

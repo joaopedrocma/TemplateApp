@@ -1,0 +1,52 @@
+<meta charset="utf-8" />
+<meta name="description" content="Recusados-Add Page" />
+<meta name="author" content="Jota/Leandro" />
+
+<div class="container" ng-controller="prestamistasListController">
+	<form ng-submit="register() " ng-init="init()">
+		<fieldset>
+			<legend>
+				Adicionar Recusado<br /> <br />
+			</legend>
+
+			<br />
+
+			<div class="form-group">
+				<div class="col-xs-9">
+					<label class="control-label" for="nome">Nome:</label> <input
+						class="form-control" type="text" name="nome" id="nome"
+						data-ng-model="newRecusado.descnomecliente"
+						placeholder="Nome do Novo Recusado" /><br />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-xs-9">
+					<label class="control-label" for="cpf">CPF:</label> <input
+						class="form-control" type="text" name="cpf" id="cpf"
+						ng-model="newRecusado.numcpfcnpj"
+						placeholder="CPF do Novo Recusado" /><br />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-xs-9">
+					<label class="control-label" for="situacao">Situação:</label> <select
+						ng-model="newRecusado.situacao"
+						ng-options="value.id as value.name for value in statusTypes"></select><br />
+				</div>
+			</div>
+
+			<br />
+			<br />
+			<br />
+
+			<div class="form-group">
+				<div class="col-xs-9">
+					<input type="submit" id="register" class="btn btn-primary"
+						value="Registrar" />
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>

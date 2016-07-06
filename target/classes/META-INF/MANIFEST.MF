@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: keepsolution-keepcred
+Implementation-Version: 1.0
+Built-By: jota
+Implementation-Vendor-Id: br.com.keepsolution
+Build-Jdk: 1.8.0_77
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+Main-Class: br.com.keepcred.Application
+

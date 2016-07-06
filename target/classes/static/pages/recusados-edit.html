@@ -1,0 +1,53 @@
+<meta charset="utf-8" />
+<meta name="description" content="Recusados-Add Page" />
+<meta name="author" content="Jota/Leandro" />
+
+<div class="container" ng-controller="recusadosListController">
+	<form ng-submit="update() " ng-init="init()">
+		<fieldset>
+			<legend>
+				Editar Recusado<br /> <br />
+			</legend>
+
+			<br />
+
+			<div class="form-group">
+				<div class="col-xs-9">
+					<label class="control-label" for="nome">Nome:</label> <input
+						class="form-control" type="text" name="nome" id="nome"
+						data-ng-model="updateRecusado.descnomecliente" disabled=disabled
+						placeholder="Novo Nome do Recusado" /><br />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-xs-9">
+					<label class="control-label" for="cpf">CPF:</label> <input
+						class="form-control" type="text" name="cpf" id="cpf"
+						ng-model="updateRecusado.numcpfcnpj" disabled=disabled
+						placeholder="Novo CPF do Recusado" /><br />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-xs-9">
+					<label class="control-label" for="situacao">Situação:</label> <select
+						ng-model="updateRecusado.situacao"
+						ng-options="value.id as value.name for value in statusTypes"></select><br />
+				</div>
+			</div>
+		</fieldset>
+
+		<br />
+
+		<div class="form-group">
+			<div class="col-xs-9">
+				<input type="submit" id="edit" class="btn btn-primary"
+					value="Confirmar" /><a
+					data-ng-click="deleteRecusado(updateRecusado.idcliente)"
+					class="btn btn-small btn-danger"style="float:right;">Reativar Recusado</a>
+			</div>
+		</div>
+
+	</form>
+</div>

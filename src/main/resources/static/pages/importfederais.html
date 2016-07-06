@@ -1,0 +1,120 @@
+<div class="container" ng-controller="uploadFederaisController">
+	<h2>Importar Arquivos - Federais</h2>
+
+	<br /> <br />
+	<hr style="border-top: 1px solid #ccc;" />
+
+	<p>{{ message }}</p>
+
+	<ul ng-hide="!successMessages" class="success">
+		<li ng-repeat="message in successMessages">{{message}}</li>
+	</ul>
+
+	<!-- Output the list of error messages if any. -->
+	<ul ng-hide="!errorMessages" class="error">
+		<li ng-repeat="message in errorMessages">{{message}}</li>
+	</ul>
+
+	<h3>Arquivos D8:</h3>
+	<br>
+
+	<div class="form-group">
+		<label for="fileServidor">Selecione o arquivo Servidor_D8:</label><input
+			type="file" file-model="fileServ" placeholder="Arquivo Servidor" /><br />
+	</div>
+
+	<div class="form-group">
+		<label for="filePensionista">Selecione o arquivo
+			Pensionistas_D8:</label><input type="file" file-model="filePens"
+			placeholder="Arquivo Pensionista" /><br />
+	</div>
+
+	<hr style="border-top: 1px solid #ccc;" />
+	<br />
+
+	<h3>Arquivos Capital:</h3>
+	<br>
+
+	<div class="form-group">
+		<label for="fileCapital">Selecione o arquivo Capital AGU:</label><input type="file"
+			file-model="fileCapAgu" placeholder="Arquivo Capital AGU" /><br />
+	</div>
+
+	<div class="form-group">
+		<label for="fileCapital">Selecione o arquivo Capital DPF:</label><input type="file"
+			file-model="fileCapDpf" placeholder="Arquivo Capital DPF" /><br />
+	</div>
+
+	<div class="form-group">
+		<label for="fileCapital">Selecione o arquivo Capital IFTM:</label><input type="file"
+			file-model="fileCapIftm" placeholder="Arquivo Capital IFTM" /><br />
+	</div>
+
+	<div class="form-group">
+		<label for="fileCapital">Selecione o arquivo Capital MEC:</label><input type="file"
+			file-model="fileCapMec" placeholder="Arquivo Capital MEC" /><br />
+	</div>
+
+
+	<div class="form-group">
+		<label for="fileCapital">Selecione o arquivo Capital MTB:</label><input type="file"
+			file-model="fileCapMtb" placeholder="Arquivo Capital MTB" /><br />
+	</div>
+
+	<div class="form-group">
+		<label for="fileCapital">Selecione o arquivo Capital UFU:</label><input type="file"
+			file-model="fileCapUfu" placeholder="Arquivo Capital UFU" /><br />
+	</div>
+
+	<hr style="border-top: 1px solid #ccc;" />
+	<br />
+
+	<h3>Arquivos Emprestimo:</h3>
+	<br>
+
+	<div class="form-group">
+		<label for="fileCapital">Selecione o arquivo Emprestimo AGU:</label><input type="file"
+			file-model="fileEmpAgu" placeholder="Arquivo Emprestimo AGU" /><br />
+	</div>
+
+	<div class="form-group">
+		<label for="fileCapital">Selecione o arquivo Emprestimo DPF:</label><input type="file"
+			file-model="fileEmpDpf" placeholder="Arquivo Emprestimo DPF" /><br />
+	</div>
+
+	<div class="form-group">
+		<label for="fileCapital">Selecione o arquivo Emprestimo IFTM:</label><input type="file"
+			file-model="fileEmpIftm" placeholder="Arquivo Emprestimo IFTM" /><br />
+	</div>
+
+	<div class="form-group">
+		<label for="fileCapital">Selecione o arquivo Emprestimo MEC:</label><input type="file"
+			file-model="fileEmpMec" placeholder="Arquivo Emprestimo MEC" /><br />
+	</div>
+
+
+	<div class="form-group">
+		<label for="fileCapital">Selecione o arquivo Emprestimo MTB:</label><input type="file"
+			file-model="fileEmpMtb" placeholder="Arquivo Emprestimo MTB" /><br />
+	</div>
+
+	<div class="form-group">
+		<label for="fileCapital">Selecione o arquivo Emprestimo UFU:</label><input type="file"
+			file-model="fileEmpUfu" placeholder="Arquivo Emprestimo UFU" /><br />
+	</div>
+
+	<hr style="border-top: 1px solid #ccc;" />
+	<br />
+	<div class="form-group">
+		<button ng-hide="loading == true" ng-click="uploadFederais()"
+			class="btn btn-primary">Importar</button>
+		<br /> <img id="mySpinner" src="img/loading.gif"
+			ng-show="loading == true" />
+	</div>
+	<br />
+	<div>
+		<a href="ftp://10.11.14.10/federais/"
+			target="ftp://10.11.14.10/federais/">Baixar arquivos</a>
+	</div>
+	<br />
+</div>

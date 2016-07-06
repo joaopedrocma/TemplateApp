@@ -1,0 +1,74 @@
+<meta charset="utf-8" />
+<meta name="description" content="Prestamistas" />
+<meta name="author" content="Jota/Leandro" />
+
+<div data-ng-controller="prestamistasListController">
+	<div class="row">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div>
+					<h3>{{ title }}</h3>
+				</div>
+<br />
+
+				<div class="table-responsive">
+					<!--  <div style="float: left">
+						<a href="#recusados-add"><button type="button"
+								class="btn btn-success">Adicionar Recusado</button></a>
+					</div>-->
+
+					<div class="form-group">
+						<input type="search" ng-model="search"
+							placeholder="Buscar por CPF ou Nome">
+					</div>
+
+					<br />
+
+					<table ng-hide="prestamistasList.length == 0"
+						class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Nome</th>
+								<th>CPF</th>
+								<th style="width: 20px;">Recusado &nbsp;</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr
+								data-ng-repeat="prestamista in prestamistasList | filter:search | orderBy:orderBy | pagination: curPage * pageSize | limitTo: pageSize">
+								<td>{{prestamista.descnomecliente}}&nbsp;</td>
+								<td>{{prestamista.numcpfcnpj}}&nbsp;</td>
+								<td><a ng-click="addPrestamista(prestamista.idcliente)"
+									class="btn btn-small btn-primary">Adicionar</a></td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- <div class="pagination pagination-centered"
+						ng-show="prestamistasList.length">
+						<ul class="pagination-controle pagination">
+							<li>
+								<button type="button" class="btn btn-primary"
+									ng-disabled="curPage == 0" ng-click="curPage=curPage-1">
+									&lt; ANT</button>
+							</li>
+							<li><span>Página {{curPage + 1}} De {{
+									numberOfPages()}}</span></li>
+							<li>
+								<button type="button" class="btn btn-primary"
+									ng-disabled="curPage >= prestamistasList.length/pageSize - 1"
+									ng-click="curPage = curPage+1">PROX &gt;</button>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div> -->
+					<em ng-show="prestamistasList.length > 0">&nbsp;&nbsp;&nbsp;&nbsp;{{prestamistasList.length}}
+						Registros </em> <!--  <br /> <em ng-show="prestamistasList.length == 0">&nbsp;&nbsp;&nbsp;&nbsp;Não
+						Há Prestamistas Cadastrados.</em> -->
+				</div>
+				<br /> <a href="#prestamistas"><button type="button"
+						class="btn btn-success" style="margin-left: 10px;">Voltar</button></a>
+			</div>
+		</div>
+	</div>
+</div>
