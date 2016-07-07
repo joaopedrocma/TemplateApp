@@ -49,8 +49,8 @@ public class PersistenceConfig {
 
 		jpaProperties.put("hibernate.dialect",
 				env.getRequiredProperty("hibernate.dialect"));
-		jpaProperties.put("hibernate.hbm2ddl.auto",
-				env.getRequiredProperty("hibernate.hbm2ddl.auto"));
+		//jpaProperties.put("hibernate.hbm2ddl.auto",
+				//env.getRequiredProperty("hibernate.hbm2ddl.auto"));
 		jpaProperties.put("hibernate.show_sql",
 				env.getRequiredProperty("hibernate.show_sql"));
 
