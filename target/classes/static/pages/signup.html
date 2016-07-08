@@ -1,105 +1,74 @@
 <div class="bs-example">
-    <h1>Sign Up</h1>
-    <form class="form-horizontal">
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="inputEmail">Email:</label>
-            <div class="col-xs-9">
-                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="inputPassword">Password:</label>
-            <div class="col-xs-9">
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="confirmPassword">Confirm Password:</label>
-            <div class="col-xs-9">
-                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="firstName">First Name:</label>
-            <div class="col-xs-9">
-                <input type="text" class="form-control" id="firstName" placeholder="First Name">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="lastName">Last Name:</label>
-            <div class="col-xs-9">
-                <input type="text" class="form-control" id="lastName" placeholder="Last Name">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="phoneNumber">Phone:</label>
-            <div class="col-xs-9">
-                <input type="tel" class="form-control" id="phoneNumber" placeholder="Phone Number">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-3">Date of Birth:</label>
-            <div class="col-xs-3">
-                <select class="form-control">
-                    <option>Date</option>
-                </select>
-            </div>
-            <div class="col-xs-3">
-                <select class="form-control">
-                    <option>Month</option>
-                </select>
-            </div>
-            <div class="col-xs-3">
-                <select class="form-control">
-                    <option>Year</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="postalAddress">Address:</label>
-            <div class="col-xs-9">
-                <textarea rows="3" class="form-control" id="postalAddress" placeholder="Postal Address"></textarea>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-3" for="ZipCode">Zip Code:</label>
-            <div class="col-xs-9">
-                <input type="text" class="form-control" id="ZipCode" placeholder="Zip Code">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-3">Gender:</label>
-            <div class="col-xs-2">
-                <label class="radio-inline">
-                    <input type="radio" name="genderRadios" value="male"> Male
-                </label>
-            </div>
-            <div class="col-xs-2">
-                <label class="radio-inline">
-                    <input type="radio" name="genderRadios" value="female"> Female
-                </label>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-xs-offset-3 col-xs-9">
-                <label class="checkbox-inline">
-                    <input type="checkbox" value="news"> Send me latest news and updates.
-                </label>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-xs-offset-3 col-xs-9">
-                <label class="checkbox-inline">
-                    <input type="checkbox" value="agree">  I agree to the <a href="#">Terms and Conditions</a>.
-                </label>
-            </div>
-        </div>
-        <br>
-        <div class="form-group">
-            <div class="col-xs-offset-3 col-xs-9">
-                <input type="submit" class="btn btn-primary" value="Submit">
-                <input type="reset" class="btn btn-default" value="Reset">
-            </div>
-        </div>
-    </form>
+	<h1>Registrar Novo Usuário</h1>
+	<form class="form-horizontal">
+<br><br>
+		<div class="form-group">
+			<label class="control-label col-xs-1" for="user">Usuário:</label>
+			<div class="col-xs-5">
+				<input type="text" class="form-control" id="user" placeholder="Nome">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-xs-1" for="password">Senha:</label>
+			<div class="col-xs-2">
+				<input type="password" class="form-control" id="password"
+					placeholder="Senha">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-xs-1" for="confirmPassword">Confirme
+				a Senha:</label>
+			<div class="col-xs-2">
+				<input type="password" class="form-control" id="confirmPassword"
+					placeholder="Senha">
+			</div>
+		</div>
+<br>
+		<div class="form-group">
+			<label class="control-label col-xs-1">Função:</label>
+			<div class="col-xs-1">
+				<label class="radio-inline"> <input type="radio"
+					name="funcao" value="usuario"> Usuário
+				</label>
+			</div>
+			<div class="col-xs-1">
+				<label class="radio-inline"> <input type="radio"
+					name="funcao" value="administrador"> Administrador
+				</label>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-xs-1">Autoridade:</label>
+			<div class="col-xs-1">
+				<label class="radio-inline"> <input type="radio"
+					name="autority" value="Comum"> Comum
+				</label>
+			</div>
+			<div class="col-xs-2">
+				<label class="radio-inline"> <input type="radio"
+					name="autority" value="Adicionar/Remover Recusados">
+					Adicionar/Remover Recusados
+				</label>
+			</div>
+			<div class="col-xs-2">
+				<label class="radio-inline"> <input type="radio"
+					name="autority" value="Adicionar/Remover
+					Benefícios">
+					Adicionar/Remover Benefícios
+				</label>
+			</div>
+		</div>
+
+		<br>
+<br>
+		<div class="form-group">
+			<div class="col-xs-offset-1 col-xs-9">
+				<input type="submit" class="btn btn-primary" value="Submit">
+				<input type="reset" class="btn btn-default" value="Reset">
+			</div>
+		</div>
+	</form>
 </div>

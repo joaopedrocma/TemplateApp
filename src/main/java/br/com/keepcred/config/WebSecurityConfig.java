@@ -18,19 +18,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @ComponentScan(basePackages = { "br.com.keepcred" })
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	// private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
-	// "classpath:/static/**", "classpath:/public/**" };
-
 	@Autowired
 	private DataSource dataSource;
-
-	// @Override
-	// protected void configure(HttpSecurity http) throws Exception {
-	// http.authorizeRequests().antMatchers("/").permitAll().antMatchers("/user/**").hasRole("USER").antMatchers("/admin/**").hasRole("ADMIN")
-	// .anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().defaultSuccessUrl("/user").and().logout()
-	// .permitAll();
-	// http.httpBasic();
-	// }
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -47,21 +36,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.jdbcAuthentication().dataSource(dataSource)
 				.usersByUsernameQuery("select username, password, enabled from users where username=?")
 				.authoritiesByUsernameQuery(
-						"select b.username, a.role from user_roles a, users b where b.username=? and a.userid=b.userid");
+						"select a.username, b.role from users a, user_roles b where a.username=? and a.userid=b.userid");
 	}
 
-	@Bean(name = "passwordEncoder")
+	@Bean
 	public PasswordEncoder passwordencoder() {
 		return new BCryptPasswordEncoder();
 	}
-
-	// @Autowired
-	// public void configureGlobal(AuthenticationManagerBuilder auth) throws
-	// Exception {
-	// auth.inMemoryAuthentication().withUser("Jotadev").password("adm").roles("ADMIN");
-	// auth.inMemoryAuthentication().withUser("Weverson").password("cred.ufu").roles("USER");
-	// auth.inMemoryAuthentication().withUser("Nayara").password("cred.ufu").roles("USER");
-	// auth.inMemoryAuthentication().withUser("Fernando").password("cred.ufu").roles("USER");
-	// auth.inMemoryAuthentication().withUser("Atendimento").password("credufu@2016").roles("USER");
-	// }
+	
+	//.passwordEncoder(passwordencoder())
+	//.authoritiesByUsernameQuery("select a.username, b.role, c.authority from users a, user_roles b, user_authorities c where a.username=? and a.userid=b.userid and a.userid=c.userid");
 }

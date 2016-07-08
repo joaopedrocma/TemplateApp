@@ -1,7 +1,5 @@
 package br.com.keepcred.entities;
 
-import java.util.Arrays;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -19,7 +17,7 @@ public class User {
 	private String username;
 
 	@Column
-	private char[] password;
+	private String password;
 
 	@Column
 	private Boolean enabled;
@@ -28,7 +26,7 @@ public class User {
 		super();
 	}
 
-	public User(Long userid, String username, char[] password, Boolean enabled) {
+	public User(Long userid, String username, String password, Boolean enabled) {
 		super();
 		this.userid = userid;
 		this.username = username;
@@ -52,11 +50,11 @@ public class User {
 		this.username = username;
 	}
 
-	public char[] getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(char[] password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
@@ -70,8 +68,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userid=" + userid + ", username=" + username + ", password=" + Arrays.toString(password)
-				+ ", enabled=" + enabled + "]";
+		return "User [userid=" + userid + ", username=" + username + ", password=" + password + ", enabled=" + enabled
+				+ "]";
 	}
-
 }
