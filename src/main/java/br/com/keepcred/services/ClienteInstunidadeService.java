@@ -3,12 +3,12 @@ package br.com.keepcred.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 
 import br.com.keepcred.entities.ClienteInstunidade;
 import br.com.keepcred.repositories.ClienteInstunidadeRepository;
 
-@Configuration
+@Service
 public class ClienteInstunidadeService {
 
 	@Autowired
@@ -18,11 +18,11 @@ public class ClienteInstunidadeService {
 		return clienteInstunidadeRepository.findAll();
 	}
 
-	public ClienteInstunidade findClienteInstunidadeById(Long id) {
+	public ClienteInstunidade findById(Long id) {
 		return clienteInstunidadeRepository.findOne(id);
 	}
 
-	public void deleteClienteInstunidade(Long id) {
+	public void delete(Long id) {
 		clienteInstunidadeRepository.delete(id);
 	}
 

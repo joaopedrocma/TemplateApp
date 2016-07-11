@@ -3,12 +3,12 @@ package br.com.keepcred.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 
 import br.com.keepcred.entities.ParticipanteContaCor;
 import br.com.keepcred.repositories.ParticipanteContaCorRepository;
 
-@Configuration
+@Service
 public class ParticipanteContaCorService {
 
 	@Autowired
@@ -18,7 +18,7 @@ public class ParticipanteContaCorService {
 		return participanteContaCorRepository.findAll();
 	}
 
-	public ParticipanteContaCor findParticipanteContaCorById(Long id) {
+	public ParticipanteContaCor findById(Long id) {
 		return participanteContaCorRepository.findOne(id);
 	}	
 }

@@ -25,14 +25,14 @@ public class ClienteInstunidadeController {
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public List<ClienteInstunidade> findAll() {
+	public List<ClienteInstunidade> findAllCliInst() {
 		return clienteInstunidadeService.findAll();
 	}
 
 	@RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public ClienteInstunidade findClienteInstunidade(@PathVariable("id") Long id) {
-		return clienteInstunidadeService.findClienteInstunidadeById(id);
+	public ClienteInstunidade findCliInstById(@PathVariable("id") Long id) {
+		return clienteInstunidadeService.findById(id);
 	}
 }

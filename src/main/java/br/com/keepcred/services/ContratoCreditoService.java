@@ -3,12 +3,12 @@ package br.com.keepcred.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 
 import br.com.keepcred.entities.ContratoCredito;
 import br.com.keepcred.repositories.ContratoCreditoRepository;
 
-@Configuration
+@Service
 public class ContratoCreditoService {
 
 	@Autowired
@@ -18,7 +18,7 @@ public class ContratoCreditoService {
 		return contratoCreditoRepository.findAll();
 	}
 
-	public ContratoCredito findContratoCreditoById(Long id) {
+	public ContratoCredito findById(Long id) {
 		return contratoCreditoRepository.findOne(id);
 	}
 

@@ -3,12 +3,12 @@ package br.com.keepcred.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 
 import br.com.keepcred.entities.Recusado;
 import br.com.keepcred.repositories.RecusadoRepository;
 
-@Configuration
+@Service
 public class RecusadoService {
 
 	@Autowired
@@ -18,7 +18,7 @@ public class RecusadoService {
 		return recusadoRepository.findAll();
 	}
 
-	public Recusado findRecusadoById(Long id) {
+	public Recusado findById(Long id) {
 		return recusadoRepository.findOne(id);
 	}
 
@@ -30,7 +30,7 @@ public class RecusadoService {
 		return recusadoRepository.save(recusado);
 	}
 
-	public void deleteRecusado(Long id) {
+	public void delete(Long id) {
 		recusadoRepository.delete(id);
 	}
 

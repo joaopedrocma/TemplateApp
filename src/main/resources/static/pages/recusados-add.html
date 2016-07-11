@@ -2,8 +2,8 @@
 <meta name="description" content="Recusados-Add Page" />
 <meta name="author" content="Jota/Leandro" />
 
-<div class="container" ng-controller="prestamistasListController">
-	<form ng-submit="register() " ng-init="init()">
+<div class="container" data-ng-controller="prestamistasListController">
+	<form data-ng-submit="register() " data-ng-init="init()">
 		<fieldset>
 			<legend>
 				Adicionar Recusado<br /> <br />
@@ -24,7 +24,7 @@
 				<div class="col-xs-9">
 					<label class="control-label" for="cpf">CPF:</label> <input
 						class="form-control" type="text" name="cpf" id="cpf"
-						ng-model="newRecusado.numcpfcnpj"
+						data-ng-model="newRecusado.numcpfcnpj"
 						placeholder="CPF do Novo Recusado" /><br />
 				</div>
 			</div>
@@ -32,14 +32,12 @@
 			<div class="form-group">
 				<div class="col-xs-9">
 					<label class="control-label" for="situacao">Situação:</label> <select
-						ng-model="newRecusado.situacao"
-						ng-options="value.id as value.name for value in statusTypes"></select><br />
+						data-ng-model="newRecusado.situacao"
+						data-ng-options="value.id as value.name for value in statusTypes"></select><br />
 				</div>
 			</div>
 
-			<br />
-			<br />
-			<br />
+			<br /> <br /> <br />
 
 			<div class="form-group">
 				<div class="col-xs-9">

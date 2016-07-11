@@ -3,12 +3,12 @@ package br.com.keepcred.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 
 import br.com.keepcred.entities.Prestamista;
 import br.com.keepcred.repositories.PrestamistaRepository;
 
-@Configuration
+@Service
 public class PrestamistaService {
 
 	@Autowired
@@ -18,7 +18,7 @@ public class PrestamistaService {
 		return prestamistaServiceRepository.findAll();
 	}
 
-	public Prestamista findPrestamistaById(Long id) {
+	public Prestamista findById(Long id) {
 		return prestamistaServiceRepository.findOne(id);
 	}
 	

@@ -11,7 +11,7 @@ keepcred.config(function($routeProvider) {
 	
 	.when('/signup', {
 		templateUrl : 'pages/signup.html',
-		controller : 'mainController'
+		controller : 'signupController'
 	})
 	
 	.when('/import', {

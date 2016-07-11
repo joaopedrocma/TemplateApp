@@ -34,16 +34,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	public void configureAuthentication(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication().dataSource(dataSource)
-				.usersByUsernameQuery("select username, password, enabled from users where username=?")
+				.usersByUsernameQuery("select username, password, enabled from users where username=? and enabled=1")
 				.authoritiesByUsernameQuery(
-						"select a.username, b.role from users a, user_roles b where a.username=? and a.userid=b.userid");
+						"select a.username, b.role from users a, user_roles b where a.username=? and a.user_role_id=b.user_role_id");
 	}
 
 	@Bean
 	public PasswordEncoder passwordencoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
-	//.passwordEncoder(passwordencoder())
-	//.authoritiesByUsernameQuery("select a.username, b.role, c.authority from users a, user_roles b, user_authorities c where a.username=? and a.userid=b.userid and a.userid=c.userid");
+
+	// .passwordEncoder(passwordencoder())
+	// .authoritiesByUsernameQuery("select a.username, b.role, c.authority from
+	// users a, user_roles b, user_authorities c where a.username=? and
+	// a.userid=b.userid and a.userid=c.userid");
 }

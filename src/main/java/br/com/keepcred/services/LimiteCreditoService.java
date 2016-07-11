@@ -3,12 +3,12 @@ package br.com.keepcred.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 
 import br.com.keepcred.entities.LimiteCredito;
 import br.com.keepcred.repositories.LimiteCreditoRepository;
 
-@Configuration
+@Service
 public class LimiteCreditoService {
 
 	@Autowired
@@ -18,7 +18,7 @@ public class LimiteCreditoService {
 		return limiteCreditoRepository.findAll();
 	}
 
-	public LimiteCredito findLimiteCreditoById(Long id) {
+	public LimiteCredito findById(Long id) {
 		return limiteCreditoRepository.findOne(id);
 	}
 

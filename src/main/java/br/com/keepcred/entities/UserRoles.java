@@ -7,26 +7,22 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user_roles")
-public class User_Roles {
+public class UserRoles {
 
 	@Id
 	@Column
 	private Long user_role_id;
 
 	@Column
-	private Long userid;
-
-	@Column
 	private String role;
 
-	public User_Roles() {
+	public UserRoles() {
 		super();
 	}
 
-	public User_Roles(Long user_role_id, Long userid, String role) {
+	public UserRoles(Long user_role_id, String role) {
 		super();
 		this.user_role_id = user_role_id;
-		this.userid = userid;
 		this.role = role;
 	}
 
@@ -36,14 +32,6 @@ public class User_Roles {
 
 	public void setUser_role_id(Long user_role_id) {
 		this.user_role_id = user_role_id;
-	}
-
-	public Long getUserid() {
-		return userid;
-	}
-
-	public void setUserid(Long userid) {
-		this.userid = userid;
 	}
 
 	public String getRole() {
@@ -56,7 +44,7 @@ public class User_Roles {
 
 	@Override
 	public String toString() {
-		return "User_Roles [user_role_id=" + user_role_id + ", userid=" + userid + ", role=" + role + "]";
+		return "UserRoles [user_role_id=" + user_role_id + ", role=" + role + "]";
 	}
 
 }

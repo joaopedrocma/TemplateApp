@@ -27,7 +27,7 @@ public class RecusadoController {
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public List<Recusado> findAll() {
+	public List<Recusado> findAllRecusados() {
 		return recusadoService.findAll();
 	}
 
@@ -35,7 +35,7 @@ public class RecusadoController {
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
 	public Recusado findRecusado(@PathVariable("id") Long id) {
-		return recusadoService.findRecusadoById(id);
+		return recusadoService.findById(id);
 	}
 
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -49,15 +49,15 @@ public class RecusadoController {
 	@RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
-	public ResponseEntity<Recusado> update(@RequestBody Recusado recusado) {
+	public ResponseEntity<Recusado> updateRecusado(@RequestBody Recusado recusado) {
 		Recusado savedRecusado = recusadoService.update(recusado);
 		return new ResponseEntity<Recusado>(savedRecusado, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
-		recusadoService.deleteRecusado(id);
+	public ResponseEntity<Void> deleteRecusado(@PathVariable("id") Long id) {
+		recusadoService.delete(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

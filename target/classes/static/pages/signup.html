@@ -1,74 +1,56 @@
-<div class="bs-example">
-	<h1>Registrar Novo Usuário</h1>
-	<form class="form-horizontal">
-<br><br>
-		<div class="form-group">
-			<label class="control-label col-xs-1" for="user">Usuário:</label>
-			<div class="col-xs-5">
-				<input type="text" class="form-control" id="user" placeholder="Nome">
-			</div>
-		</div>
+<meta charset="utf-8" />
+<meta name="description" content="User-Add Page" />
+<meta name="author" content="JotaDev" />
 
-		<div class="form-group">
-			<label class="control-label col-xs-1" for="password">Senha:</label>
-			<div class="col-xs-2">
-				<input type="password" class="form-control" id="password"
-					placeholder="Senha">
-			</div>
-		</div>
-
-		<div class="form-group">
-			<label class="control-label col-xs-1" for="confirmPassword">Confirme
-				a Senha:</label>
-			<div class="col-xs-2">
-				<input type="password" class="form-control" id="confirmPassword"
-					placeholder="Senha">
-			</div>
-		</div>
-<br>
-		<div class="form-group">
-			<label class="control-label col-xs-1">Função:</label>
-			<div class="col-xs-1">
-				<label class="radio-inline"> <input type="radio"
-					name="funcao" value="usuario"> Usuário
-				</label>
-			</div>
-			<div class="col-xs-1">
-				<label class="radio-inline"> <input type="radio"
-					name="funcao" value="administrador"> Administrador
-				</label>
-			</div>
-		</div>
-
-		<div class="form-group">
-			<label class="control-label col-xs-1">Autoridade:</label>
-			<div class="col-xs-1">
-				<label class="radio-inline"> <input type="radio"
-					name="autority" value="Comum"> Comum
-				</label>
-			</div>
-			<div class="col-xs-2">
-				<label class="radio-inline"> <input type="radio"
-					name="autority" value="Adicionar/Remover Recusados">
-					Adicionar/Remover Recusados
-				</label>
-			</div>
-			<div class="col-xs-2">
-				<label class="radio-inline"> <input type="radio"
-					name="autority" value="Adicionar/Remover
-					Benefícios">
-					Adicionar/Remover Benefícios
-				</label>
-			</div>
-		</div>
-
+<div class="container" data-ng-controller="signupController">
+	<form class="form-horizontal" data-ng-submit="register() ">
 		<br>
-<br>
-		<div class="form-group">
-			<div class="col-xs-offset-1 col-xs-9">
-				<input type="submit" class="btn btn-primary" value="Submit">
-				<input type="reset" class="btn btn-default" value="Reset">
+		<fieldset>
+			<legend>
+				Registrar Novo Usuário<br /> <br />
+			</legend>
+			<br>
+			<div class="form-group">
+				<label class="control-label col-xs-1" for="user">Usuário:</label>
+				<div class="col-xs-5">
+					<input type="text" class="form-control" id="user"
+						data-ng-model="newUser.username" placeholder="Nome">
+				</div>
 			</div>
-		</div>
+
+			<div class="form-group">
+				<label class="control-label col-xs-1" for="password">Senha:</label>
+				<div class="col-xs-2">
+					<input type="password" class="form-control" id="password"
+						data-ng-model="newUser.password" placeholder="Senha">
+				</div>
+			</div>
+			<br>
+			<div class="form-group">
+				<label class="control-label col-xs-1">Autoridade:</label>
+				<div class="col-xs-1">
+					<input type="text" class="form-control" id="userRole"
+						data-ng-model="newUser.user_role_id"
+						data-ng-options="users.user_id as users.username for users in usersList">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-xs-1">Grupo:</label>
+				<div class="col-xs-1">
+					<input type="text" class="form-control" id="group"
+						data-ng-model="newUser.group_id"
+						data-ng-options="users.group_id as users.group_id.groupname for users in usersList">
+				</div>
+			</div>
+
+			<br> <br>
+			<div class="form-group">
+				<div class="col-xs-9">
+					<input type="submit" id="register" class="btn btn-primary"
+						value="Registrar">
+				</div>
+			</div>
+		</fieldset>
 	</form>
 </div>

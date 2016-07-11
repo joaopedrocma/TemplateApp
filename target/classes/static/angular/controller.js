@@ -3,6 +3,120 @@ keepcred.controller('mainController', function($scope) {
 
 keepcred
 .controller(
+		'signupController',
+		[
+				'$scope',
+				'$http',
+				'$location',
+				'$routeParams',
+				'Users',
+				'UserRoles',
+				'Groups',
+				'GroupRoles',
+				function($scope, $http, $location, $routeParams, Users, UserRoles, Groups, GroupRoles) {
+					
+					$scope.curPage = 0;
+					$scope.pageSize = 6;
+
+					$scope.title = 'Usuários';
+					$scope.titleAdd = 'Cadastrar Usuário';
+					$scope.titleEdit = 'Editar Usuário';
+
+					$scope.usersList = Users.query();
+					$scope.userRolesList = UserRoles.query();
+					$scope.groupsList = Groups.query();
+					$scope.groupRolesList = GroupRoles.query();
+			
+					$scope.refresh = function() {
+						$scope.usersList = Users.query();
+					};
+
+					$scope.init = function() {
+						$scope.updateUser = Users.get({
+							id : $routeParams.id
+						});
+					};
+
+					$scope.reset = function() {
+						$scope.newUser = {};
+					};
+
+					$scope.editUser = function(userId) {
+						$location.path('/user-edit/' + userId);
+					};
+
+					$scope.deleteUser = function(userId) {
+						Users.remove({
+							id : userId
+						});
+
+						$scope.refresh();
+
+						$location.path('/users/');
+
+					};
+
+					$scope.register = function() {
+						$scope.errorMessage = 'Ocorreu um erro no registro do usuário!';
+
+						Users
+								.save(
+										$scope.newUser,
+										function(data) {
+
+											$scope.successMessage = 'Usuário registrado com sucesso!';
+
+											$scope.refresh();
+
+											$scope.reset();
+										});
+					};
+
+					$scope.update = function() {
+						$scope.errorMessage = 'Ocorreu um erro na atualização do usuário!';
+
+						Users.edit($scope.updateUser, function(
+								data) {
+
+							$location.path('/users/');
+
+							$scope.refresh();
+
+							$scope.reset();
+						});
+					};
+
+					$scope.refresh();
+
+					$scope.reset();
+
+					$scope.orderBy = 'users';
+
+					$scope.numberOfPages = function() {
+						return Math.ceil($scope.usersList.length
+								/ $scope.pageSize);
+					}
+				} ]);
+
+keepcred.controller('prestamistasController', ['$http', '$scope', function($http, $scope) {	
+	$scope.loading = false;
+	$scope.getPrestamistas = function() {
+		$scope.loading = true;
+		$http({
+			  method: 'POST',
+			  url: '/prestamistas'
+		}).success(function() {
+			alert("Arquivo criado com sucesso");
+		}).error(function() {
+			alert("Ocorreu um erro na criação do arquivo!");
+		}).finally(function () {
+		      $scope.loading = false;
+		});
+	}
+} ]);
+
+keepcred
+.controller(
 		'prestamistasListController',
 		[
 				'$scope',
@@ -24,8 +138,6 @@ keepcred
 					}];
 					
 					$scope.title = 'Prestamistas';
-					// $scope.titleAdd = 'Novo Bairro';
-					// $scope.titleEdit = 'Editar Bairro';
 					$scope.message = 'Adicionar Recusado';
 
 					$scope.prestamistasList = Prestamistas.query();
@@ -45,8 +157,7 @@ keepcred
 					};
 					
 					$scope.register = function() {
-						$scope.errorMessages = '';
-						$scope.errors = {};
+						$scope.errorMessage = 'Ocorreu um erro no registro do recusado';
 
 						Recusados
 								.save(
@@ -298,22 +409,6 @@ keepcred.controller('uploadFundacoesController', [ '$http', '$scope',
                                        		
                                        		} ]);
 
-keepcred.controller('prestamistasController', ['$http', '$scope', function($http, $scope) {	
-	$scope.loading = false;
-	$scope.getPrestamistas = function() {
-		$scope.loading = true;
-		$http({
-			  method: 'POST',
-			  url: '/prestamistas'
-		}).success(function() {
-			alert("Arquivo criado com sucesso");
-		}).error(function() {
-			alert("Erro!");
-		}).finally(function () {
-		      $scope.loading = false;
-		});
-	}
-} ]);
 
 keepcred.directive('fileModel', [ '$parse', function($parse) {
 	return {

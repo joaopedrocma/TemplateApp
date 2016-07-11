@@ -3,12 +3,12 @@ package br.com.keepcred.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 
 import br.com.keepcred.entities.ClienteFisica;
 import br.com.keepcred.repositories.ClienteFisicaRepository;
 
-@Configuration
+@Service
 public class ClienteFisicaService {
 
 	@Autowired
@@ -18,7 +18,7 @@ public class ClienteFisicaService {
 		return clienteFisicaRepository.findAll();
 	}
 
-	public ClienteFisica findClienteFisicaById(Long id) {
+	public ClienteFisica findById(Long id) {
 		return clienteFisicaRepository.findOne(id);
 	}
 

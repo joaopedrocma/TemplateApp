@@ -17,22 +17,22 @@ import br.com.keepcred.services.ParticipanteContaCorService;;
 
 @Controller
 @RequestMapping("/participante")
-public class ParticipanteCcController {
+public class ParticipanteContaCorController {
 
 	@Autowired
-	private ParticipanteContaCorService participanteCcorService;
+	private ParticipanteContaCorService participanteContaCorService;
 
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public List<ParticipanteContaCor> findAll() {
-		return participanteCcorService.findAll();
+	public List<ParticipanteContaCor> findAllPartContaCor() {
+		return participanteContaCorService.findAll();
 	}
 
 	@RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public ParticipanteContaCor findClienteInstunidade(@PathVariable("id") Long id) {
-		return participanteCcorService.findParticipanteContaCorById(id);
+	public ParticipanteContaCor findPartContaCor(@PathVariable("id") Long id) {
+		return participanteContaCorService.findById(id);
 	}
 }

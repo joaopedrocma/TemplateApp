@@ -25,16 +25,16 @@ public class ClienteFisicaController {
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public List<ClienteFisica> findAll() {
+	public List<ClienteFisica> findAllCliFis() {
 		return clienteFisicaService.findAll();
 	}
 
 	@RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public ClienteFisica findClienteInstunidade(@PathVariable("id") Long id) {
+	public ClienteFisica findCliFisById(@PathVariable("id") Long id) {
 		
-		ClienteFisica ret = clienteFisicaService.findClienteFisicaById(id);
+		ClienteFisica ret = clienteFisicaService.findById(id);
 
 	
 		return ret;
