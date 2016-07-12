@@ -8,22 +8,22 @@ keepcred.config(function($routeProvider) {
 		templateUrl : 'pages/home.html',
 		controller : 'mainController'
 	})
-	
+
 	.when('/signup', {
 		templateUrl : 'pages/signup.html',
 		controller : 'signupController'
 	})
-	
+
 	.when('/import', {
 		templateUrl : 'pages/import.html',
 		controller : 'fileUploadController'
 	})
-	
+
 	.when('/importfederais', {
 		templateUrl : 'pages/importfederais.html',
 		controller : 'uploadFederaisController'
 	})
-	
+
 	.when('/importfundacoes', {
 		templateUrl : 'pages/importfundacoes.html',
 		controller : 'uploadFundacoesController'
@@ -53,11 +53,4 @@ keepcred.config(function($routeProvider) {
 		templateUrl : 'pages/recusados-edit.html',
 		controller : 'recusadosListController'
 	})
-});
-
-angular.module('keepcred').filter('pagination', function() {
-	return function(input, start) {
-		start = +start;
-		return input.slice(start);
-	};
 });

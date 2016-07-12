@@ -4,53 +4,50 @@
 
 <div class="container" data-ng-controller="signupController">
 	<form class="form-horizontal" data-ng-submit="register() ">
+
+
 		<br>
-		<fieldset>
-			<legend>
-				Registrar Novo Usuário<br /> <br />
-			</legend>
-			<br>
-			<div class="form-group">
-				<label class="control-label col-xs-1" for="user">Usuário:</label>
-				<div class="col-xs-5">
-					<input type="text" class="form-control" id="user"
-						data-ng-model="newUser.username" placeholder="Nome">
-				</div>
+		<div class="form-group">
+			<label class="control-label col-xs-1" for="user">Usuário:</label>
+			<div class="col-xs-5">
+				<input type="text" class="form-control" id="user"
+					data-ng-model="newUser.username" lower-case placeholder="Nome" />
 			</div>
+		</div>
 
-			<div class="form-group">
-				<label class="control-label col-xs-1" for="password">Senha:</label>
-				<div class="col-xs-2">
-					<input type="password" class="form-control" id="password"
-						data-ng-model="newUser.password" placeholder="Senha">
-				</div>
+		<div class="form-group">
+			<label class="control-label col-xs-1" for="password">Senha:</label>
+			<div class="col-xs-2">
+				<input type="password" class="form-control" id="password"
+					data-ng-model="newUser.password" placeholder="Senha" />
 			</div>
-			<br>
-			<div class="form-group">
-				<label class="control-label col-xs-1">Autoridade:</label>
-				<div class="col-xs-1">
-					<input type="text" class="form-control" id="userRole"
-						data-ng-model="newUser.user_role_id"
-						data-ng-options="users.user_id as users.username for users in usersList">
-				</div>
-			</div>
+		</div>
 
-			<div class="form-group">
-				<label class="control-label col-xs-1">Grupo:</label>
-				<div class="col-xs-1">
-					<input type="text" class="form-control" id="group"
-						data-ng-model="newUser.group_id"
-						data-ng-options="users.group_id as users.group_id.groupname for users in usersList">
-				</div>
-			</div>
+		<hr style="border-top: 1px solid #ccc;" />
 
-			<br> <br>
-			<div class="form-group">
-				<div class="col-xs-9">
-					<input type="submit" id="register" class="btn btn-primary"
-						value="Registrar">
-				</div>
+		<div class="form-group">
+			<label class="control-label col-xs-1">Autoridade:</label>
+			<div class="col-xs-2">
+				<select class="form-control" class="form-control"
+					data-ng-model="newUser.user_roles_id"
+					data-ng-options="users.user_roles_id as users.role for users in userRolesList"></select>
 			</div>
-		</fieldset>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-xs-1">Grupo:</label>
+			<div class="col-xs-2">
+				<select  class="form-control" data-ng-model="newUser.group_id"
+					data-ng-options="users.group_id as users.groupname for users in groupsList"></select>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-xs-9">
+				<input type="submit" id="register" class="btn btn-primary"
+					value="Registrar">
+			</div>
+		</div>
+
 	</form>
 </div>

@@ -33,10 +33,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	public void configureAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-		auth.jdbcAuthentication().dataSource(dataSource)
+		auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(passwordencoder())
 				.usersByUsernameQuery("select username, password, enabled from users where username=? and enabled=1")
 				.authoritiesByUsernameQuery(
-						"select a.username, b.role from users a, user_roles b where a.username=? and a.user_role_id=b.user_role_id");
+						"select a.username, b.role from users a, user_roles b where a.username=? and a.user_roles_id=b.user_roles_id");
 	}
 
 	@Bean

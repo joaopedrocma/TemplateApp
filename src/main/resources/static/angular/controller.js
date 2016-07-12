@@ -26,7 +26,7 @@ keepcred
 					$scope.userRolesList = UserRoles.query();
 					$scope.groupsList = Groups.query();
 					$scope.groupRolesList = GroupRoles.query();
-			
+					
 					$scope.refresh = function() {
 						$scope.usersList = Users.query();
 					};
@@ -58,10 +58,9 @@ keepcred
 
 					$scope.register = function() {
 						$scope.errorMessage = 'Ocorreu um erro no registro do usuário!';
-
-						Users
-								.save(
-										$scope.newUser,
+						
+						$scope.newUser.enabled = 1;
+						Users.save($scope.newUser,
 										function(data) {
 
 											$scope.successMessage = 'Usuário registrado com sucesso!';
@@ -425,3 +424,33 @@ keepcred.directive('fileModel', [ '$parse', function($parse) {
 		}
 	};
 } ]);
+
+angular.module('keepcred').filter('pagination', function() {
+	return function(input, start) {
+		start = +start;
+		return input.slice(start);
+	};
+});
+
+angular.module('keepcred').directive('lowerCase', function($parse) {
+	return {
+		require : 'ngModel',
+		link : function postLink(scope, element, attrs, modelCtrl) {
+			var lowerize = function(inputValue) {
+				if (!inputValue) {
+					return inputValue;
+				}
+				var lowerized = inputValue.toLowerCase();
+				if (lowerized !== inputValue) {
+					modelCtrl.$setViewValue(lowerized);
+					modelCtrl.$render();
+				}
+				return lowerized;
+			};
+
+			var model = $parse(attrs.ngModel);
+			modelCtrl.$parsers.push(lowerize);
+			lowerize(model(scope));
+		}
+	};
+});

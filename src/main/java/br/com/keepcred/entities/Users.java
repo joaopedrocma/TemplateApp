@@ -2,6 +2,8 @@ package br.com.keepcred.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,6 +13,7 @@ public class Users {
 
 	@Id
 	@Column
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long user_id;
 
 	@Column
@@ -20,7 +23,7 @@ public class Users {
 	private String password;
 
 	@Column
-	private Long user_role_id;
+	private Long user_roles_id;
 
 	@Column
 	private Long group_id;
@@ -32,12 +35,12 @@ public class Users {
 		super();
 	}
 
-	public Users(Long user_id, String username, String password, Long user_role_id, Long group_id, Boolean enabled) {
+	public Users(Long user_id, String username, String password, Long user_roles_id, Long group_id, Boolean enabled) {
 		super();
 		this.user_id = user_id;
 		this.username = username;
 		this.password = password;
-		this.user_role_id = user_role_id;
+		this.user_roles_id = user_roles_id;
 		this.group_id = group_id;
 		this.enabled = enabled;
 	}
@@ -66,12 +69,12 @@ public class Users {
 		this.password = password;
 	}
 
-	public Long getUser_role_id() {
-		return user_role_id;
+	public Long getUser_roles_id() {
+		return user_roles_id;
 	}
 
-	public void setUser_role_id(Long user_role_id) {
-		this.user_role_id = user_role_id;
+	public void setUser_roles_id(Long user_roles_id) {
+		this.user_roles_id = user_roles_id;
 	}
 
 	public Long getGroup_id() {
@@ -92,7 +95,9 @@ public class Users {
 
 	@Override
 	public String toString() {
-		return "Users [user_id=" + user_id + ", username=" + username + ", password=" + password + ", user_role_id="
-				+ user_role_id + ", group_id=" + group_id + ", enabled=" + enabled + "]";
+		return "Users [user_id=" + user_id + ", username=" + username + ", password=" + password + ", user_roles_id="
+				+ user_roles_id + ", group_id=" + group_id + ", enabled=" + enabled + "]";
 	}
+
+	
 }
