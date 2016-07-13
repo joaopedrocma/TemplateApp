@@ -1,0 +1,65 @@
+<meta charset="utf-8" />
+<meta name="description" content="User List" />
+<meta name="author" content="JotaDev" />
+
+<div data-ng-controller="userController">
+	<div class="row">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div>
+					<h3>{{ titlelist }}</h3>
+				</div>
+				<div class="table-responsive">
+
+					<br /> <br />
+
+					<div class="form-group">
+						<input type="search" data-ng-model="search"
+							placeholder="Buscar por nome">
+					</div>
+					<table data-ng-hide="usersList.length == 0"
+						class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Usuário</th>
+								<th>Autoridade</th>
+								<th>Grupo</th>
+								<th style="width: 20px;">&nbsp;</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr
+								data-ng-repeat="user in usersList | filter:search | orderBy:orderBy | pagination: curPage * pageSize | limitTo: pageSize">
+								<td>{{user.username}}&nbsp;</td>
+								<td>{{user.user_role_id}}&nbsp;</td>
+								<td>{{user.group_id}}&nbsp;</td>
+								<td><a data-ng-click="editUser(user.user_id)"
+									class="btn btn-small btn-primary">Editar</a></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="pagination pagination-centered"
+						data-ng-show="usersList.length">
+						<ul class="pagination-controle pagination">
+							<li>
+								<button type="button" class="btn btn-primary"
+									data-ng-disabled="curPage == 0"
+									data-ng-click="curPage=curPage-1">&lt; ANT</button>
+							</li>
+							<li><span>Página {{curPage + 1}} De {{
+									numberOfPages()}}</span></li>
+							<li>
+								<button type="button" class="btn btn-primary"
+									data-ng-disabled="curPage >= usersList.length/pageSize - 1"
+									data-ng-click="curPage = curPage+1">PROX &gt;</button>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<em data-ng-show="usersList.length == 0">&nbsp;&nbsp;&nbsp;&nbsp;Não
+					Há Usuário Cadastrados.</em> <a href="#user_add"><button type="button"
+						class="btn btn-success" style="margin-left: 10px;">Cadastrar Novo Usuário</button></a>
+			</div>
+		</div>
+	</div>
+</div>

@@ -14,7 +14,7 @@ public class UserRoles {
 	@Id
 	@Column
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long user_roles_id;
+	private Long user_role_id;
 
 	@Column
 	private String role;
@@ -23,18 +23,18 @@ public class UserRoles {
 		super();
 	}
 
-	public UserRoles(Long user_roles_id, String role) {
+	public UserRoles(Long user_role_id, String role) {
 		super();
-		this.user_roles_id = user_roles_id;
+		this.user_role_id = user_role_id;
 		this.role = role;
 	}
 
-	public Long getUser_roles_id() {
-		return user_roles_id;
+	public Long getUser_role_id() {
+		return user_role_id;
 	}
 
-	public void setUser_roles_id(Long user_roles_id) {
-		this.user_roles_id = user_roles_id;
+	public void setUser_role_id(Long user_role_id) {
+		this.user_role_id = user_role_id;
 	}
 
 	public String getRole() {
@@ -47,8 +47,7 @@ public class UserRoles {
 
 	@Override
 	public String toString() {
-		return "UserRoles [user_roles_id=" + user_roles_id + ", role=" + role + "]";
+		return "UserRoles [user_role_id=" + user_role_id + ", role=" + role + "]";
 	}
 
-	
 }

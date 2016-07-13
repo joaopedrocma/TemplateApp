@@ -9,23 +9,18 @@ keepcred.config(function($routeProvider) {
 		controller : 'mainController'
 	})
 
-	.when('/signup', {
-		templateUrl : 'pages/signup.html',
-		controller : 'signupController'
-	})
-
 	.when('/import', {
 		templateUrl : 'pages/import.html',
 		controller : 'fileUploadController'
 	})
 
-	.when('/importfederais', {
-		templateUrl : 'pages/importfederais.html',
+	.when('/import_federais', {
+		templateUrl : 'pages/import_federais.html',
 		controller : 'uploadFederaisController'
 	})
 
-	.when('/importfundacoes', {
-		templateUrl : 'pages/importfundacoes.html',
+	.when('/import_fundacoes', {
+		templateUrl : 'pages/import_fundacoes.html',
 		controller : 'uploadFundacoesController'
 	})
 
@@ -34,23 +29,38 @@ keepcred.config(function($routeProvider) {
 		controller : 'prestamistasController'
 	})
 
-	.when('/prestamistaslist', {
-		templateUrl : 'pages/prestamistaslist.html',
+	.when('/prestamistas_list', {
+		templateUrl : 'pages/prestamistas_list.html',
 		controller : 'prestamistasListController'
 	})
 
-	.when('/recusadoslist', {
-		templateUrl : 'pages/recusadoslist.html',
+	.when('/prestamistas_recusados_list', {
+		templateUrl : 'pages/prestamistas_recusados_list.html',
 		controller : 'recusadosListController'
 	})
 
-	.when('/recusados-add/:id', {
-		templateUrl : 'pages/recusados-add.html',
+	.when('/user_list', {
+		templateUrl : 'pages/user_list.html',
+		controller : 'userController'
+	})
+
+	.when('/user_add', {
+		templateUrl : 'pages/user_add.html',
+		controller : 'userController'
+	})
+
+	.when('/user_edit', {
+		templateUrl : 'pages/user_edit.html',
+		controller : 'userController'
+	})
+
+	.when('/prestamistas_recusados_add/:id', {
+		templateUrl : 'pages/prestamistas_recusados_add.html',
 		controller : 'prestamistasListController'
 	})
 
-	.when('/recusados-edit/:id', {
-		templateUrl : 'pages/recusados-edit.html',
+	.when('/prestamistas_recusados_edit/:id', {
+		templateUrl : 'pages/prestamistas_recusados_edit.html',
 		controller : 'recusadosListController'
 	})
 });

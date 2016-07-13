@@ -1,19 +1,14 @@
-<div class="container" ng-controller="prestamistasController">
+<meta charset="utf-8" />
+<meta name="description" content="Prestamistas" />
+<meta name="author" content="JotaDev" />
+
+<div class="container" data-ng-controller="prestamistasController">
 	<div>
 		<h1>Prestamistas</h1>
 	</div>
 	<br />
-	<hr style="border-top:1px solid #ccc;" />
+	<hr style="border-top: 1px solid #ccc;" />
 	<br />
-
-	<ul ng-hide="!successMessages" class="success">
-		<li ng-repeat="message in successMessages">{{message}}</li>
-	</ul>
-
-	<!-- Output the list of error messages if any. -->
-	<ul ng-hide="!errorMessages" class="error">
-		<li ng-repeat="message in errorMessages">{{message}}</li>
-	</ul>
 
 	<div>
 		<a href="#prestamistaslist"><button type="button"
@@ -28,15 +23,15 @@
 	</div>
 
 	<br />
-	<hr style="border-top:1px solid #ccc;"/>
+	<hr style="border-top: 1px solid #ccc;" />
 	<br />
 
 	<div class="form-group">
-		<button ng-hide="loading == true" ng-click="getPrestamistas()"
-			class="btn btn-success">Gerar Planilha Prestamistas</button><br/>
-		<img id="mySpinner" src="img/loading.gif" ng-show="loading == true" />
-		<br />
-		<hr style="border-top:1px solid #ccc;"/>
+		<button data-ng-hide="loading == true" data-ng-click="getPrestamistas()"
+			class="btn btn-success">Gerar Planilha Prestamistas</button>
+		<br /> <img id="mySpinner" src="img/loading.gif"
+			data-ng-show="loading == true" /> <br />
+		<hr style="border-top: 1px solid #ccc;" />
 		<br />
 		<div>
 			<a href="ftp://10.11.14.10/prestamistas/"

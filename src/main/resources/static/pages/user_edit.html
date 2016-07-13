@@ -1,0 +1,52 @@
+<meta charset="utf-8" />
+<meta name="description" content="Users-Add Page" />
+<meta name="author" content="JotaDev" />
+
+<div class="container" data-ng-controller="userController">
+	<form data-ng-submit="update() " data-ng-init="init()">
+		<fieldset>
+			<br>
+			<h3>{{titleEdit}}</h3>
+			<br />
+
+			<div class="form-group">
+				<div class="col-xs-9">
+					<label class="control-label" for="username">Usuário:</label> <input
+						class="form-control" type="text" name="username" id="username"
+						data-ng-model="updateUser.username"
+						placeholder="Novo nome do usuário" /><br />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-xs-9">
+					<label class="control-label" for="authority">Autoridade:</label> <select
+						data-ng-model="updateUser.user_role_id"
+						data-ng-options="users.user_role_id as users.role for users in userRolesList"></select>
+					placeholder="Nova autoridade do usuário" /><br />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-xs-9">
+					<label class="control-label" for="group">Grupo:</label> <select
+						data-ng-model="updateUser.group_id"
+						data-ng-options="users.group_id as users.groupname for users in groupsList"></select><br />
+				</div>
+			</div>
+		</fieldset>
+
+		<br />
+
+		<div class="form-group">
+			<div class="col-xs-9">
+				<input type="submit" id="edit" class="btn btn-primary"
+					value="Confirmar" /><a
+					data-ng-click="deleteUser(updateUser.user_id)"
+					class="btn btn-small btn-danger" style="float: right;">Apagar
+					usuário</a>
+			</div>
+		</div>
+
+	</form>
+</div>

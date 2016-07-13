@@ -2,10 +2,10 @@
 <meta name="description" content="User-Add Page" />
 <meta name="author" content="JotaDev" />
 
-<div class="container" data-ng-controller="signupController">
+<div class="container" data-ng-controller="userController">
 	<form class="form-horizontal" data-ng-submit="register() ">
-
-
+		<br>
+		<h3>{{titleAdd}}</h3>
 		<br>
 		<div class="form-group">
 			<label class="control-label col-xs-1" for="user">Usuário:</label>
@@ -29,15 +29,15 @@
 			<label class="control-label col-xs-1">Autoridade:</label>
 			<div class="col-xs-2">
 				<select class="form-control" class="form-control"
-					data-ng-model="newUser.user_roles_id"
-					data-ng-options="users.user_roles_id as users.role for users in userRolesList"></select>
+					data-ng-model="newUser.user_role_id"
+					data-ng-options="users.user_role_id as users.role for users in userRolesList"></select>
 			</div>
 		</div>
 
 		<div class="form-group">
 			<label class="control-label col-xs-1">Grupo:</label>
 			<div class="col-xs-2">
-				<select  class="form-control" data-ng-model="newUser.group_id"
+				<select class="form-control" data-ng-model="newUser.group_id"
 					data-ng-options="users.group_id as users.groupname for users in groupsList"></select>
 			</div>
 		</div>

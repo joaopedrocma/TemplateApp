@@ -17,7 +17,7 @@ public class Groups {
 	private Long group_id;
 
 	@Column
-	private Long group_roles_id;
+	private Long group_role_id;
 
 	@Column
 	private String groupname;
@@ -26,10 +26,10 @@ public class Groups {
 		super();
 	}
 
-	public Groups(Long group_id, Long group_roles_id, String groupname) {
+	public Groups(Long group_id, Long group_role_id, String groupname) {
 		super();
 		this.group_id = group_id;
-		this.group_roles_id = group_roles_id;
+		this.group_role_id = group_role_id;
 		this.groupname = groupname;
 	}
 
@@ -41,12 +41,12 @@ public class Groups {
 		this.group_id = group_id;
 	}
 
-	public Long getGroup_roles_id() {
-		return group_roles_id;
+	public Long getGroup_role_id() {
+		return group_role_id;
 	}
 
-	public void setGroup_roles_id(Long group_roles_id) {
-		this.group_roles_id = group_roles_id;
+	public void setGroup_role_id(Long group_role_id) {
+		this.group_role_id = group_role_id;
 	}
 
 	public String getGroupname() {
@@ -59,7 +59,7 @@ public class Groups {
 
 	@Override
 	public String toString() {
-		return "Groups [group_id=" + group_id + ", group_roles_id=" + group_roles_id + ", groupname=" + groupname + "]";
+		return "Groups [group_id=" + group_id + ", group_role_id=" + group_role_id + ", groupname=" + groupname + "]";
 	}
 
 }

@@ -1,0 +1,50 @@
+<meta charset="utf-8" />
+<meta name="description" content="Import Fundacoes" />
+<meta name="author" content="JotaDev" />
+
+<div class="container" data-ng-controller="uploadFundacoesController">
+	<h2>Importar Arquivos - Fundações</h2>
+
+	<br />
+	<hr style="border-top: 1px solid #ccc;" />
+	<br />
+
+	<div class="form-group">
+		<label for="fileType">Selecione o tipo dos arquivo:</label> <select
+			data-ng-model="fileType"
+			data-ng-options="value.id as value.name for value in fileTypes"
+			class="form-control" style="width: 180px;" data-ng-required="true"></select>
+	</div>
+
+	<hr style="border-top: 1px solid #ccc;" />
+	<br />
+
+	<div class="form-group">
+		<label for="fileType">Selecione o arquivo Capital:</label><input
+			type="file" data-file-model="myFileCap" placeholder="Arquivo"
+			data-ng-required="true" autofocus /><br />
+	</div>
+	<hr style="border-top: 1px solid #ccc;" />
+	<br />
+
+	<div class="form-group">
+		<label for="fileType">Selecione o arquivo Emprestimo:</label><input
+			type="file" data-file-model="myFileEmp" placeholder="Arquivo"
+			data-ng-required="true" autofocus /><br />
+	</div>
+	<hr style="border-top: 1px solid #ccc;" />
+	<br />
+
+	<div class="form-group">
+		<button data-ng-hide="loading == true"
+			data-ng-click="uploadFundacoes()" class="btn btn-primary">Importar</button>
+		<br /> <img id="mySpinner" src="img/loading.gif"
+			data-ng-show="loading == true" />
+	</div>
+	<br />
+	<div>
+		<a href="ftp://10.11.14.10/fundacoes/"
+			target="ftp://10.11.14.10/fundacoes/">Baixar arquivos</a>
+	</div>
+	<br />
+</div>
