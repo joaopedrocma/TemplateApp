@@ -1,9 +1,9 @@
 <meta charset="utf-8" />
-<meta name="description" content="Recusados-Add Page" />
-<meta name="author" content="Jota/Leandro" />
+<meta name="description" content="Prestamistas_Recusados_Edit" />
+<meta name="author" content="JotaDev" />
 
-<div class="container" ng-controller="recusadosListController">
-	<form ng-submit="update() " ng-init="init()">
+<div class="container" data-ng-controller="recusadosListController">
+	<form data-ng-submit="update() " data-ng-init="init()">
 		<fieldset>
 			<legend>
 				Editar Recusado<br /> <br />
@@ -32,8 +32,8 @@
 			<div class="form-group">
 				<div class="col-xs-9">
 					<label class="control-label" for="situacao">Situação:</label> <select
-						ng-model="updateRecusado.situacao"
-						ng-options="value.id as value.name for value in statusTypes"></select><br />
+						data-ng-model="updateRecusado.situacao"
+						data-ng-options="value.id as value.name for value in statusTypes"></select><br />
 				</div>
 			</div>
 		</fieldset>

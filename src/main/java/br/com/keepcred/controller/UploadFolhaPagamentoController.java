@@ -32,7 +32,7 @@ import br.com.keepcred.file.WriteFileTxt;
 import br.com.keepcred.repositories.ClienteRepository;
 
 @Controller
-public class FileUploadController {
+public class UploadFolhaPagamentoController {
 
 	@Autowired
 	private ClienteRepository clienteRepository;
@@ -42,7 +42,7 @@ public class FileUploadController {
 
 	Pattern patternUfuSalarios = Pattern.compile("([0-9/]{8})([A-Za-zÀ-Ú\\s]{41})([0-9\\s]{5})([0-9\\s.,]{12})");
 
-	@RequestMapping(value = "/upload", method = RequestMethod.GET)
+	@RequestMapping(value = "/uploadfolhapagamento", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	public @ResponseBody String provideUploadInfo() {
 		return "You can upload a file by posting to this same URL.";

@@ -1,8 +1,8 @@
 <meta charset="utf-8" />
-<meta name="description" content="User List" />
+<meta name="description" content="User_List" />
 <meta name="author" content="JotaDev" />
 
-<div data-ng-controller="userController">
+<div data-ng-controller="usersController">
 	<div class="row">
 		<div class="panel panel-default">
 			<div class="panel-body">
@@ -31,8 +31,8 @@
 							<tr
 								data-ng-repeat="user in usersList | filter:search | orderBy:orderBy | pagination: curPage * pageSize | limitTo: pageSize">
 								<td>{{user.username}}&nbsp;</td>
-								<td>{{user.user_role_id}}&nbsp;</td>
-								<td>{{user.group_id}}&nbsp;</td>
+								<td>{{userRolesList[$index].role}}&nbsp;</td>
+								<td>{{groupsList[$index].groupname}}&nbsp;</td>
 								<td><a data-ng-click="editUser(user.user_id)"
 									class="btn btn-small btn-primary">Editar</a></td>
 							</tr>
@@ -57,8 +57,9 @@
 					</div>
 				</div>
 				<em data-ng-show="usersList.length == 0">&nbsp;&nbsp;&nbsp;&nbsp;Não
-					Há Usuário Cadastrados.</em> <a href="#user_add"><button type="button"
-						class="btn btn-success" style="margin-left: 10px;">Cadastrar Novo Usuário</button></a>
+					Há Usuário Cadastrados.</em> <a href="#user_add"><button
+						type="button" class="btn btn-success" style="margin-left: 10px;">Cadastrar
+						Novo Usuário</button></a>
 			</div>
 		</div>
 	</div>

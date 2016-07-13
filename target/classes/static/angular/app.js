@@ -9,9 +9,9 @@ keepcred.config(function($routeProvider) {
 		controller : 'mainController'
 	})
 
-	.when('/import', {
-		templateUrl : 'pages/import.html',
-		controller : 'fileUploadController'
+	.when('/import_folha_pagamento', {
+		templateUrl : 'pages/import_folha_pagamento.html',
+		controller : 'uploadFolhaPagamentoController'
 	})
 
 	.when('/import_federais', {
@@ -26,7 +26,7 @@ keepcred.config(function($routeProvider) {
 
 	.when('/prestamistas', {
 		templateUrl : 'pages/prestamistas.html',
-		controller : 'prestamistasController'
+		controller : 'generatePrestamistasController'
 	})
 
 	.when('/prestamistas_list', {
@@ -36,22 +36,22 @@ keepcred.config(function($routeProvider) {
 
 	.when('/prestamistas_recusados_list', {
 		templateUrl : 'pages/prestamistas_recusados_list.html',
-		controller : 'recusadosListController'
+		controller : 'prestamistasRecusadosListController'
 	})
 
 	.when('/user_list', {
 		templateUrl : 'pages/user_list.html',
-		controller : 'userController'
+		controller : 'usersController'
 	})
 
 	.when('/user_add', {
 		templateUrl : 'pages/user_add.html',
-		controller : 'userController'
+		controller : 'usersController'
 	})
 
-	.when('/user_edit', {
+	.when('/user_edit/:id', {
 		templateUrl : 'pages/user_edit.html',
-		controller : 'userController'
+		controller : 'usersController'
 	})
 
 	.when('/prestamistas_recusados_add/:id', {

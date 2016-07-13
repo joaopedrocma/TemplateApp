@@ -3,7 +3,7 @@ keepcred.controller('mainController', function($scope) {
 
 keepcred
 .controller(
-		'userController',
+		'usersController',
 		[
 				'$scope',
 				'$http',
@@ -95,7 +95,7 @@ keepcred
 					}
 				} ]);
 
-keepcred.controller('prestamistasController', ['$http', '$scope', function($http, $scope) {	
+keepcred.controller('generatePrestamistasController', ['$http', '$scope', function($http, $scope) {	
 	$scope.loading = false;
 	$scope.getPrestamistas = function() {
 		$scope.loading = true;
@@ -178,7 +178,7 @@ keepcred
 
 keepcred
 .controller(
-		'recusadosListController',
+		'prestamistasRecusadosListController',
 		[
 				'$scope',
 				'$http',
@@ -254,18 +254,19 @@ keepcred
 
 
 
-keepcred.controller('fileUploadController', [ '$http', '$scope',
+keepcred.controller('uploadFolhaPagamentoController', [ '$http', '$scope',
 		function($http, $scope) {
 	$scope.loading = false;
 			$scope.fileTypes = [ {
 				id : 'FILE_TYPE_FAEPU_FARMACIA',
 				name : 'FAEPU_FARMACIA'
 			}, {
-				id : 'FILE_TYPE_UFU_FARMACIA',
-				name : 'UFU_FARMACIA'
-			}, {
 				id : 'FILE_TYPE_FAEPU_SALARIOS',
 				name : 'FAEPU_SALARIOS'
+				
+			}, {
+				id : 'FILE_TYPE_UFU_FARMACIA',
+				name : 'UFU_FARMACIA'
 			}, {
 				id : 'FILE_TYPE_UFU_SALARIOS',
 				name : 'UFU_SALARIOS'
@@ -275,7 +276,7 @@ keepcred.controller('fileUploadController', [ '$http', '$scope',
 				$scope.loading = true;
 				var file = $scope.myFile;
 				var fileType = $scope.fileType;
-				var uploadUrl = "/upload";
+				var uploadUrl = "/uploadfolhapagamento";
 				var dateTime = $scope.dateTime;
 				var data = new FormData();
 
@@ -292,7 +293,7 @@ keepcred.controller('fileUploadController', [ '$http', '$scope',
 					alert("Arquivo criado com sucesso");
 					
 				}).error(function(data) {
-					alert("Erro!");
+					alert("Ocorreu um erro na importação do arquivo!");
 				}).finally(function () {
 				      $scope.loading = false;
 				});
@@ -346,7 +347,7 @@ keepcred.controller('uploadFederaisController', [ '$http', '$scope',
                                        				}).success(function(data) {
                                        					alert("Arquivo criado com sucesso");
                                        				}).error(function(data) {
-                                       					alert("Erro!");
+                                       					alert("Ocorreu um erro na importação do arquivo!");
                                        				}).finally(function () {
                                        				      $scope.loading = false;
                                        				});
@@ -394,7 +395,7 @@ keepcred.controller('uploadFundacoesController', [ '$http', '$scope',
                                        				}).success(function(data) {
                                        					alert("Arquivo criado com sucesso");
                                        				}).error(function(data) {
-                                       					alert("Erro!");
+                                       					alert("Ocorreu um erro na importação do arquivo!");
                                        				}).finally(function () {
                                        				      $scope.loading = false;
                                        				});

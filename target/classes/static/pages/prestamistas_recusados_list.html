@@ -1,8 +1,8 @@
 <meta charset="utf-8" />
-<meta name="description" content="Recusados" />
-<meta name="author" content="Jota/Leandro" />
+<meta name="description" content="Prestamistas_Recusados_List" />
+<meta name="author" content="JotaDev" />
 
-<div data-ng-controller="recusadosListController">
+<div data-ng-controller="prestamistasRecusadosListController">
 	<div class="row">
 		<div class="panel panel-default">
 			<div class="panel-body">
@@ -14,10 +14,10 @@
 					<br /> <br />
 
 					<div class="form-group">
-						<input type="search" ng-model="search"
+						<input type="search" data-ng-model="search"
 							placeholder="Buscar por nome">
 					</div>
-					<table ng-hide="recusadosList.length == 0"
+					<table data-ng-hide="recusadosList.length == 0"
 						class="table table-bordered table-striped">
 						<thead>
 							<tr>
@@ -33,30 +33,30 @@
 								<td>{{recusado.descnomecliente}}&nbsp;</td>
 								<td>{{recusado.numcpfcnpj}}&nbsp;</td>
 								<td>{{recusado.situacao}}&nbsp;</td>
-								<td><a ng-click="editRecusado(recusado.idcliente)"
+								<td><a data-ng-click="editRecusado(recusado.idcliente)"
 									class="btn btn-small btn-primary">Editar</a></td>
 							</tr>
 						</tbody>
 					</table>
 					<div class="pagination pagination-centered"
-						ng-show="recusadosList.length">
+						data-ng-show="recusadosList.length">
 						<ul class="pagination-controle pagination">
 							<li>
 								<button type="button" class="btn btn-primary"
-									ng-disabled="curPage == 0" ng-click="curPage=curPage-1">
-									&lt; ANT</button>
+									data-ng-disabled="curPage == 0" data-ng-click="curPage=curPage-1">
+									&lt; Ant</button>
 							</li>
 							<li><span>Página {{curPage + 1}} De {{
 									numberOfPages()}}</span></li>
 							<li>
 								<button type="button" class="btn btn-primary"
-									ng-disabled="curPage >= recusadosList.length/pageSize - 1"
-									ng-click="curPage = curPage+1">PROX &gt;</button>
+									data-ng-disabled="curPage >= recusadosList.length/pageSize - 1"
+									data-ng-click="curPage = curPage+1">Prox &gt;</button>
 							</li>
 						</ul>
 					</div>
 				</div>
-				<em ng-show="recusadosList.length == 0">&nbsp;&nbsp;&nbsp;&nbsp;Não
+				<em data-ng-show="recusadosList.length == 0">&nbsp;&nbsp;&nbsp;&nbsp;Não
 					Há Recusados Cadastrados.</em> <a href="#prestamistas"><button
 						type="button" class="btn btn-success" style="margin-left: 10px;">Voltar</button></a>
 			</div>

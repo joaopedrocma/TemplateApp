@@ -2,7 +2,7 @@
 <meta name="description" content="Prestamistas" />
 <meta name="author" content="JotaDev" />
 
-<div class="container" data-ng-controller="prestamistasController">
+<div class="container" data-ng-controller="generatePrestamistasController">
 	<div>
 		<h1>Prestamistas</h1>
 	</div>
@@ -11,14 +11,14 @@
 	<br />
 
 	<div>
-		<a href="#prestamistaslist"><button type="button"
+		<a href="#prestamistas_list"><button type="button"
 				class="btn btn-primary">Adicionar Recusado</button></a>
 	</div>
 
 	<br />
 
 	<div>
-		<a href="#recusadoslist"><button type="button"
+		<a href="#prestamistas_recusados_list"><button type="button"
 				class="btn btn-primary">Editar Recusado</button></a>
 	</div>
 
@@ -33,9 +33,13 @@
 			data-ng-show="loading == true" /> <br />
 		<hr style="border-top: 1px solid #ccc;" />
 		<br />
+		<!--<div>
+			<a href="ftp://177.73.233.187/prestamistas/"
+				target="ftp://177.73.233.187/prestamistas/">Baixar arquivos</a>
+		</div>-->
 		<div>
-			<a href="ftp://10.11.14.10/prestamistas/"
-				target="ftp://10.11.14.10/prestamistas/">Baixar arquivos</a>
-		</div>
+		<a href="/home/jota/Documents/JotaDev/KeepCredTest/prestamistas/"
+			target="_blank">Baixar arquivos</a>
+	</div>
 	</div>
 </div>
