@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Recusado {
+public class Recusados {
 
 	@Id
 	@Column
@@ -20,11 +20,11 @@ public class Recusado {
 	@Column
 	private String SITUACAO;
 
-	public Recusado() {
+	public Recusados() {
 		super();
 	}
 
-	public Recusado(Long iDCLIENTE, String dESCNOMECLIENTE, String nUMCPFCNPJ, String sITUACAO) {
+	public Recusados(Long iDCLIENTE, String dESCNOMECLIENTE, String nUMCPFCNPJ, String sITUACAO) {
 		super();
 		IDCLIENTE = iDCLIENTE;
 		DESCNOMECLIENTE = dESCNOMECLIENTE;

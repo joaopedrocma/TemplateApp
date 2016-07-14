@@ -1,5 +1,7 @@
 package br.com.keepcred.entities;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -10,80 +12,80 @@ import javax.persistence.Table;
 public class ContratoCredito {
 
 	@Column
-	private Long IDCLIENTE;
+	private Long idcliente;
 
 	@Column
-	private Long CODTIPOSITUACAOTITULO;
+	private Long codtiposituacaotitulo;
 
 	@Id
 	@Column
-	private Long NUMCONTRATOCREDITO;
+	private Long numcontratocredito;
 
 	@Column
-	private Long IDMODALIDADEPRODUTO;
+	private Long idmodalidadeproduto;
 
 	@Column
-	private float VALORSALDODEVEDORCONTABIL;
+	private BigDecimal valorsaldodevedorcontabil;
 
 	public ContratoCredito() {
 		super();
 	}
 
-	public ContratoCredito(Long iDCLIENTE, Long cODTIPOSITUACAOTITULO, Long nUMCONTRATOCREDITO,
-			Long iDMODALIDADEPRODUTO, float vALORSALDODEVEDORCONTABIL) {
+	public ContratoCredito(Long idcliente, Long codtiposituacaotitulo, Long numcontratocredito,
+			Long idmodalidadeproduto, BigDecimal valorsaldodevedorcontabil) {
 		super();
-		IDCLIENTE = iDCLIENTE;
-		CODTIPOSITUACAOTITULO = cODTIPOSITUACAOTITULO;
-		NUMCONTRATOCREDITO = nUMCONTRATOCREDITO;
-		IDMODALIDADEPRODUTO = iDMODALIDADEPRODUTO;
-		VALORSALDODEVEDORCONTABIL = vALORSALDODEVEDORCONTABIL;
+		this.idcliente = idcliente;
+		this.codtiposituacaotitulo = codtiposituacaotitulo;
+		this.numcontratocredito = numcontratocredito;
+		this.idmodalidadeproduto = idmodalidadeproduto;
+		this.valorsaldodevedorcontabil = valorsaldodevedorcontabil;
 	}
 
-	public Long getIDCLIENTE() {
-		return IDCLIENTE;
+	public Long getIdcliente() {
+		return idcliente;
 	}
 
-	public void setIDCLIENTE(Long iDCLIENTE) {
-		IDCLIENTE = iDCLIENTE;
+	public void setIdcliente(Long idcliente) {
+		this.idcliente = idcliente;
 	}
 
-	public Long getCODTIPOSITUACAOTITULO() {
-		return CODTIPOSITUACAOTITULO;
+	public Long getCodtiposituacaotitulo() {
+		return codtiposituacaotitulo;
 	}
 
-	public void setCODTIPOSITUACAOTITULO(Long cODTIPOSITUACAOTITULO) {
-		CODTIPOSITUACAOTITULO = cODTIPOSITUACAOTITULO;
+	public void setCodtiposituacaotitulo(Long codtiposituacaotitulo) {
+		this.codtiposituacaotitulo = codtiposituacaotitulo;
 	}
 
-	public Long getNUMCONTRATOCREDITO() {
-		return NUMCONTRATOCREDITO;
+	public Long getNumcontratocredito() {
+		return numcontratocredito;
 	}
 
-	public void setNUMCONTRATOCREDITO(Long nUMCONTRATOCREDITO) {
-		NUMCONTRATOCREDITO = nUMCONTRATOCREDITO;
+	public void setNumcontratocredito(Long numcontratocredito) {
+		this.numcontratocredito = numcontratocredito;
 	}
 
-	public Long getIDMODALIDADEPRODUTO() {
-		return IDMODALIDADEPRODUTO;
+	public Long getIdmodalidadeproduto() {
+		return idmodalidadeproduto;
 	}
 
-	public void setIDMODALIDADEPRODUTO(Long iDMODALIDADEPRODUTO) {
-		IDMODALIDADEPRODUTO = iDMODALIDADEPRODUTO;
+	public void setIdmodalidadeproduto(Long idmodalidadeproduto) {
+		this.idmodalidadeproduto = idmodalidadeproduto;
 	}
 
-	public float getVALORSALDODEVEDORCONTABIL() {
-		return VALORSALDODEVEDORCONTABIL;
+	public BigDecimal getValorsaldodevedorcontabil() {
+		return valorsaldodevedorcontabil;
 	}
 
-	public void setVALORSALDODEVEDORCONTABIL(float vALORSALDODEVEDORCONTABIL) {
-		VALORSALDODEVEDORCONTABIL = vALORSALDODEVEDORCONTABIL;
+	public void setValorsaldodevedorcontabil(BigDecimal valorsaldodevedorcontabil) {
+		this.valorsaldodevedorcontabil = valorsaldodevedorcontabil;
 	}
 
 	@Override
 	public String toString() {
-		return "ContratoCredito [IDCLIENTE=" + IDCLIENTE + ", CODTIPOSITUACAOTITULO=" + CODTIPOSITUACAOTITULO
-				+ ", NUMCONTRATOCREDITO=" + NUMCONTRATOCREDITO + ", IDMODALIDADEPRODUTO=" + IDMODALIDADEPRODUTO
-				+ ", VALORSALDODEVEDORCONTABIL=" + VALORSALDODEVEDORCONTABIL + "]";
+		return "ContratoCredito [idcliente=" + idcliente + ", codtiposituacaotitulo=" + codtiposituacaotitulo
+				+ ", numcontratocredito=" + numcontratocredito + ", idmodalidadeproduto=" + idmodalidadeproduto
+				+ ", valorsaldodevedorcontabil=" + valorsaldodevedorcontabil + "]";
 	}
 
 }

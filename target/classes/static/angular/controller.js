@@ -17,10 +17,6 @@ keepcred
 					$scope.curPage = 0;
 					$scope.pageSize = 6;
 
-					$scope.titlelist = 'Usuários';
-					$scope.titleAdd = 'Cadastrar Usuário';
-					$scope.titleEdit = 'Editar Usuário';
-
 					$scope.usersList = Users.query();
 					$scope.userRolesList = UserRoles.query();
 					$scope.groupsList = Groups.query();
@@ -28,6 +24,9 @@ keepcred
 					
 					$scope.refresh = function() {
 						$scope.usersList = Users.query();
+						$scope.userRolesList = UserRoles.query();
+						$scope.groupsList = Groups.query();
+						$scope.groupRolesList = GroupRoles.query();
 					};
 
 					$scope.init = function() {
@@ -49,6 +48,9 @@ keepcred
 							id : userId
 						});
 
+						$scope.errorMessage = 'Ocorreu um erro na remoção do usuário!';
+						$scope.successMessage = 'Usuário removido com sucesso!';
+						
 						$scope.refresh();
 
 						$location.path('/user_list/');
@@ -56,30 +58,31 @@ keepcred
 
 					$scope.register = function() {					
 						$scope.errorMessage = 'Ocorreu um erro no registro do usuário!';
+						$scope.successMessage = 'Usuário registrado com sucesso!';
 						
 						$scope.newUser.enabled = 1;
 						Users.save($scope.newUser,
-							function(data) {
-								$scope.successMessage = 'Usuário registrado com sucesso!';
-
+								
+							function(data) {						
 								$scope.refresh();
 
 								$scope.reset();
+								
+								$location.path('/user_list/');
 							});
 					};
 
-					$scope.update = function() {
-						
+					$scope.update = function() {						
 						$scope.errorMessage = 'Ocorreu um erro na atualização do usuário!';
-
+						$scope.successMessage = 'Usuário atualizado com sucesso!';
+						
 						Users.edit($scope.updateUser, function(
-								data) {
-
-							$location.path('/user_list/');
-
+								data) {							
 							$scope.refresh();
 
 							$scope.reset();
+							
+							$location.path('/user_list/');
 						});
 					};
 
@@ -120,9 +123,9 @@ keepcred
 				'$http',
 				'$location',
 				'$routeParams',
-				'Prestamistas',
+				'ClienteInstunidade',
 				'Recusados',
-				function($scope, $http, $location, $routeParams, Prestamistas, Recusados) {				
+				function($scope, $http, $location, $routeParams, ClienteInstunidade, Recusados) {				
 					$scope.curPage = 0;
 					$scope.pageSize = 6;
 
@@ -133,32 +136,28 @@ keepcred
 						id : 'EXCLUIDO',
 						name : 'Excluido'
 					}];
-					
-					$scope.titlelist = 'Prestamistas';
-					$scope.titleadd = 'Adicionar Recusado';
 
-					$scope.prestamistasList = Prestamistas.query();
+					$scope.prestamistasList = ClienteInstunidade.query();
 
 					$scope.refresh = function() {
-						$scope.prestamistasList = Prestamistas.query();
+						$scope.prestamistasList = ClienteInstunidade.query();
 					};
 
 					$scope.init = function() {
-						$scope.newRecusado = Prestamistas.get({
+						$scope.newRecusado = ClienteInstunidade.get({
 							id : $routeParams.id
 						});
 					};
 					
-					$scope.addPrestamista = function(prestamistaId) {
+					$scope.addRecusado = function(prestamistaId) {
 						$location.path('/prestamistas_recusados_add/' + prestamistaId);
 					};
 					
 					$scope.register = function() {
 						$scope.errorMessage = 'Ocorreu um erro no registro do recusado';
+						$scope.successMessage = 'Recusado registrado com sucesso!';
 
-						Recusados.save($scope.newRecusado,function(data) {
-
-											$scope.successMessage = 'Recusado Registrado com Sucesso!';
+						Recusados.save($scope.newRecusado,function(data) {											
 
 											$location.path('/prestamistas_list/');
 											
@@ -184,9 +183,8 @@ keepcred
 				'$http',
 				'$location',
 				'$routeParams',
-				'Prestamistas',
 				'Recusados',
-				function($scope, $http, $location, $routeParams, Prestamistas, Recusados) {
+				function($scope, $http, $location, $routeParams, Recusados) {
 					$scope.curPage = 0;
 					$scope.pageSize = 6;
 
@@ -197,8 +195,6 @@ keepcred
 						id : 'EXCLUIDO',
 						name : 'Excluido'
 					}];
-					
-					$scope.titlelist = 'Recusados';
 					
 					$scope.recusadosList = Recusados.query();
 
@@ -223,6 +219,9 @@ keepcred
 							id : recusadoId
 						});
 
+						$scope.errorMessage = 'Ocorreu um erro na remoção do recusado';						
+						$scope.successMessage = 'Recusado reativado com sucesso!';
+						
 						$scope.refresh();
 
 						$location.path('/prestamistas_recusados_list/');
@@ -230,14 +229,14 @@ keepcred
 					};
 
 					$scope.update = function() {
-						$scope.errorMessages = '';
-						$scope.errors = {};
+						$scope.errorMessage = 'Ocorreu um erro na alteração do recusado';						
+						$scope.successMessage = 'Recusado alterado com sucesso!';
 
-						Recusados.edit($scope.updateRecusado, function(data) {
-
-							$location.path('/prestamistas_recusados_list/');
+						Recusados.edit($scope.updateRecusado, function(data) {							
 
 							$scope.refresh();
+							
+							$location.path('/prestamistas_recusados_list/');
 						});
 					};
 
@@ -448,3 +447,13 @@ keepcred.directive('lowerCase', function($parse) {
 		}
 	};
 });
+
+function InvalidMsg(textbox) {
+    if (textbox.value == '') {
+        textbox.setCustomValidity('Campo obrigatório!');
+    }
+    else {
+       textbox.setCustomValidity('');
+    }
+    return true;
+}

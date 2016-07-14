@@ -3,52 +3,71 @@
 <meta name="author" content="JotaDev" />
 
 <div class="container" data-ng-controller="usersController">
-	<form data-ng-submit="update() " data-ng-init="init()">
-		<fieldset>
-			<br>
-			<h3>{{titleEdit}}</h3>
-			<br />
+	<form class="form-horizontal" data-ng-submit="update()"
+		data-ng-init="init()">
 
-			<div class="form-group">
-				<div class="col-xs-9">
-					<label class="control-label" for="username">Usuário:</label> <input
-						class="form-control" type="text" name="username" id="username"
-						data-ng-model="updateUser.username"
-						placeholder="Novo nome do usuário" /><br />
-				</div>
-			</div>
+		<br/>
+		<h2>Editar Usuário</h2>
 
-			<div class="form-group">
-				<div class="col-xs-9">
-					<label class="control-label" for="authority">Autoridade:</label> <select
-						data-ng-model="updateUser.user_role_id"
-						data-ng-options="users.user_role_id as users.role for users in userRolesList"></select>
-					placeholder="Nova autoridade do usuário" /><br />
-				</div>
+		<div class="form-group">
+			<label class="control-label col-xs-1" for="username">Usuário:</label>
+			<div class="col-xs-5">
+				<input type="text" class="form-control"
+					oninvalid="InvalidMsg(this);" required="required" id="username"
+					data-ng-model="updateUser.username" lower-case
+					placeholder="Novo nome do usuário" autofocus="autofocus" /><br />
 			</div>
+		</div>
 
-			<div class="form-group">
-				<div class="col-xs-9">
-					<label class="control-label" for="group">Grupo:</label> <select
-						data-ng-model="updateUser.group_id"
-						data-ng-options="users.group_id as users.groupname for users in groupsList"></select><br />
-				</div>
+		<div class="form-group">
+			<label class="control-label col-xs-1" for="enabled">Ativo:</label>
+			<div class="col-xs-2">
+				<select name="enabled" oninvalid="InvalidMsg(this);" required
+					class="form-control" class="form-control"
+					data-ng-model="updateUser.enabled"><option value="" selected="selected">Selecionar</option>
+					<option value="1">Sim</option>
+					<option value="0">Não</option></select>
 			</div>
-		</fieldset>
+		</div>
+
+
+		<hr style="border-top: 1px solid #ccc;" />
+
+		<div class="form-group">
+			<label class="control-label col-xs-1" for="authority">Autoridade:</label>
+			<div class="col-xs-2">
+				<select name="authority" oninvalid="InvalidMsg(this);" required
+					class="form-control" class="form-control"
+					data-ng-model="updateUser.user_role_id"
+					data-ng-options="users.user_role_id as users.role for users in userRolesList"><option
+						value="">Selecionar</option></select>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-xs-1" for="group">Grupo:</label>
+			<div class="col-xs-2">
+				<select name="group" oninvalid="InvalidMsg(this);" required
+					class="form-control" class="form-control"
+					data-ng-model="updateUser.group_id"
+					data-ng-options="users.group_id as users.groupname for users in groupsList"><option
+						value="">Selecionar</option></select><br />
+			</div>
+		</div>
 
 		<br />
 
 		<div class="form-group">
-			<div class="col-xs-9">
+			<a href="#user_list" class="col-xs-1"><button type="button"
+					class="btn btn-default">Voltar</button></a>
+			<div>
 				<input type="submit" id="edit" class="btn btn-primary"
-					value="Confirmar" /><a
-					data-ng-click="deleteUser(updateUser.user_id)"
-					class="btn btn-small btn-danger" style="float: right;">Apagar
-					usuário</a>
-			</div>
-			<a href="#user_list"><button
-						type="button" class="btn btn-success" style="margin-left: 10px;">Voltar</button></a>
-		</div>
+					value="Confirmar" />
 
+				<button type="button" data-ng-click="deleteUser(updateUser.user_id)"
+					class="btn btn-small btn-danger" style="float: right;">Apagar
+					Usuário</button>
+			</div>
+		</div>
 	</form>
 </div>

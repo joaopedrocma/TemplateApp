@@ -2,7 +2,7 @@ var keepcredService = angular.module('keepcredService', ['ngResource']);
 
 	var baseUrl = 'http://localhost:9380'
 		
-		keepcredService.factory('Prestamistas', function($resource){
+		keepcredService.factory('ClienteInstunidade', function($resource){
 		    return $resource(baseUrl + '/clienteinstunidade/:id', { id: '@id' }, {
 		  query:  {method: 'GET', isArray: true},
 		  get:    {method: 'GET'},

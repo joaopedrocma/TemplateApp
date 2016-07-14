@@ -43,18 +43,19 @@
 					<div class="panel-body">
 						<div th:if="${param.error}"><font color="#bb0000">Nome ou senha inválidos!</font></div>
 						<div th:if="${param.logout}"><font color="#00bb00">Logout com sucesso!</font></div>
-						<form class="form-signin" th:action="@{/login}" method="post">
+						<form class="form-signin" th:action="@{/login}" method="post" autocomplete="off">
 							<fieldset>
 								<div class="form-group">
-									<input class="form-control" placeholder="Usuário"
-										name="username" type="text" autofocus>
+									<input class="form-control" oninvalid="InvalidMsg(this);"
+										required="required" name="username" type="text"
+										placeholder="Usuário" autofocus="autofocus">
 								</div>
 								<div class="form-group">
-									<input class="form-control" placeholder="Senha" name="password"
-										type="password" value="">
+									<input class="form-control" oninvalid="InvalidMsg(this);" required="required" name="password"
+										type="password" placeholder="Senha">
 								</div>								
 								<button class="btn btn-md btn-success" type="submit"
-									style="background-color: #00aa00; display: block; margin: 0 auto; color: #ffffff; font-size: 16px; width: 130px;">Entrar</button>
+									style=" display: block; margin: 0 auto; color: #ffffff; font-size: 16px; width: 130px;">Entrar</button>
 							</fieldset>
 						</form>
 					</div>

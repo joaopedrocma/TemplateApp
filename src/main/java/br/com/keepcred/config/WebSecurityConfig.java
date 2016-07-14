@@ -26,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.authorizeRequests().antMatchers("/").permitAll().antMatchers("/keepcred/**").hasAnyRole("USER", "ADMIN")
 				.antMatchers("/keepcred/admin/**").hasRole("ADMIN").anyRequest().authenticated().and().formLogin()
-				.loginPage("/test").usernameParameter("username").passwordParameter("password").permitAll()
+				.loginPage("/login").usernameParameter("username").passwordParameter("password").permitAll()
 				.defaultSuccessUrl("/keepcred").and().logout().permitAll().and().exceptionHandling()
 				.accessDeniedPage("/403").and().csrf().disable();
 	}

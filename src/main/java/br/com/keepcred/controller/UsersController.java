@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import br.com.keepcred.entities.Users;
-import br.com.keepcred.services.UserService;
+import br.com.keepcred.services.UsersService;
 
 @Controller
 @RequestMapping("/users")
 public class UsersController {
 
 	@Autowired
-	private UserService userService;
+	private UsersService userService;
 
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)

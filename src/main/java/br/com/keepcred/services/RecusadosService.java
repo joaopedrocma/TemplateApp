@@ -5,28 +5,28 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.keepcred.entities.Recusado;
-import br.com.keepcred.repositories.RecusadoRepository;
+import br.com.keepcred.entities.Recusados;
+import br.com.keepcred.repositories.RecusadosRepository;
 
 @Service
-public class RecusadoService {
+public class RecusadosService {
 
 	@Autowired
-	private RecusadoRepository recusadoRepository;
+	private RecusadosRepository recusadoRepository;
 
-	public List<Recusado> findAll() {
+	public List<Recusados> findAll() {
 		return recusadoRepository.findAll();
 	}
 
-	public Recusado findById(Long id) {
+	public Recusados findById(Long id) {
 		return recusadoRepository.findOne(id);
 	}
 
-	public Recusado create(Recusado recusado) {
+	public Recusados create(Recusados recusado) {
 		return recusadoRepository.save(recusado);
 	}
 	
-	public Recusado update(Recusado recusado) {
+	public Recusados update(Recusados recusado) {
 		return recusadoRepository.save(recusado);
 	}
 

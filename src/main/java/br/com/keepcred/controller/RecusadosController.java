@@ -14,44 +14,44 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import br.com.keepcred.entities.Recusado;
-import br.com.keepcred.services.RecusadoService;
+import br.com.keepcred.entities.Recusados;
+import br.com.keepcred.services.RecusadosService;
 
 @Controller
 @RequestMapping("/recusados")
-public class RecusadoController {
+public class RecusadosController {
 
 	@Autowired
-	private RecusadoService recusadoService;
+	private RecusadosService recusadoService;
 
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public List<Recusado> findAllRecusados() {
+	public List<Recusados> findAllRecusados() {
 		return recusadoService.findAll();
 	}
 
 	@RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public Recusado findRecusado(@PathVariable("id") Long id) {
+	public Recusados findRecusado(@PathVariable("id") Long id) {
 		return recusadoService.findById(id);
 	}
 
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
-	public ResponseEntity<Recusado> createRecusado(@RequestBody Recusado recusado) {
-		Recusado savedRecusado = recusadoService.create(recusado);
-		return new ResponseEntity<Recusado>(savedRecusado, HttpStatus.CREATED);
+	public ResponseEntity<Recusados> createRecusado(@RequestBody Recusados recusado) {
+		Recusados savedRecusado = recusadoService.create(recusado);
+		return new ResponseEntity<Recusados>(savedRecusado, HttpStatus.CREATED);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
-	public ResponseEntity<Recusado> updateRecusado(@RequestBody Recusado recusado) {
-		Recusado savedRecusado = recusadoService.update(recusado);
-		return new ResponseEntity<Recusado>(savedRecusado, HttpStatus.OK);
+	public ResponseEntity<Recusados> updateRecusado(@RequestBody Recusados recusado) {
+		Recusados savedRecusado = recusadoService.update(recusado);
+		return new ResponseEntity<Recusados>(savedRecusado, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)

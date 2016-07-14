@@ -11,40 +11,40 @@ public class LimiteCredito {
 
 	@Id
 	@Column
-	private Long NUMCONTACORRENTE;
+	private Long numcontacorrente;
 
 	@Column
-	private Long VALORLIMITE;
+	private Long valorlimite;
 
 	public LimiteCredito() {
 		super();
 	}
 
-	public LimiteCredito(Long nUMCONTACORRENTE, Long vALORLIMITE) {
+	public LimiteCredito(Long numcontacorrente, Long valorlimite) {
 		super();
-		NUMCONTACORRENTE = nUMCONTACORRENTE;
-		VALORLIMITE = vALORLIMITE;
+		this.numcontacorrente = numcontacorrente;
+		this.valorlimite = valorlimite;
 	}
 
-	public Long getNUMCONTACORRENTE() {
-		return NUMCONTACORRENTE;
+	public Long getNumcontacorrente() {
+		return numcontacorrente;
 	}
 
-	public void setNUMCONTACORRENTE(Long nUMCONTACORRENTE) {
-		NUMCONTACORRENTE = nUMCONTACORRENTE;
+	public void setNumcontacorrente(Long numcontacorrente) {
+		this.numcontacorrente = numcontacorrente;
 	}
 
-	public Long getVALORLIMITE() {
-		return VALORLIMITE;
+	public Long getValorlimite() {
+		return valorlimite;
 	}
 
-	public void setVALORLIMITE(Long vALORLIMITE) {
-		VALORLIMITE = vALORLIMITE;
+	public void setValorlimite(Long valorlimite) {
+		this.valorlimite = valorlimite;
 	}
 
 	@Override
 	public String toString() {
-		return "LimiteCredito [NUMCONTACORRENTE=" + NUMCONTACORRENTE + ", VALORLIMITE=" + VALORLIMITE + "]";
+		return "LimiteCredito [numcontacorrente=" + numcontacorrente + ", valorlimite=" + valorlimite + "]";
 	}
 
 }

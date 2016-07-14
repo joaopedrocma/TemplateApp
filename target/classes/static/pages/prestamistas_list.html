@@ -6,16 +6,15 @@
 	<div class="row">
 		<div class="panel panel-default">
 			<div class="panel-body">
+
 				<br />
-				<h3>{{ titlelist }}</h3>
-				<br />
+				<h2>Recusados</h2>
+
 				<div class="table-responsive">
 					<div class="form-group">
 						<input type="search" data-ng-model="search"
 							placeholder="Buscar por CPF ou Nome">
 					</div>
-
-					<br />
 
 					<table data-ng-hide="prestamistasList.length == 0"
 						class="table table-bordered table-striped">
@@ -23,7 +22,7 @@
 							<tr>
 								<th>Nome</th>
 								<th>CPF</th>
-								<th style="width: 20px;">Recusado &nbsp;</th>
+								<th style="width: 20px;">&nbsp;</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -31,8 +30,7 @@
 								data-ng-repeat="prestamista in prestamistasList | filter:search | orderBy:orderBy | pagination: curPage * pageSize | limitTo: pageSize">
 								<td>{{prestamista.descnomecliente}}&nbsp;</td>
 								<td>{{prestamista.numcpfcnpj}}&nbsp;</td>
-								<td><a
-									data-ng-click="addPrestamista(prestamista.idcliente)"
+								<td><a data-ng-click="addRecusado(prestamista.idcliente)"
 									class="btn btn-small btn-primary">Adicionar</a></td>
 							</tr>
 						</tbody>

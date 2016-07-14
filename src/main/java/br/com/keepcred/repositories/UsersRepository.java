@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.keepcred.entities.Users;
 
-public interface UserRepository extends JpaRepository<Users, Long>{
+public interface UsersRepository extends JpaRepository<Users, Long>{
 
 }

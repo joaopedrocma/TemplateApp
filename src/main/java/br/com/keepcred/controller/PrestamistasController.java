@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -25,25 +26,29 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import br.com.keepcred.entities.Prestamista;
-import br.com.keepcred.entities.Recusado;
-import br.com.keepcred.repositories.PrestamistaRepository;
-import br.com.keepcred.repositories.RecusadoRepository;
+import br.com.keepcred.entities.Prestamistas;
+import br.com.keepcred.entities.Recusados;
+import br.com.keepcred.repositories.PrestamistasRepository;
+import br.com.keepcred.repositories.RecusadosRepository;
 
 @Controller
-public class PrestamistaController {
+public class PrestamistasController {
 
 	@Autowired
-	private PrestamistaRepository prestamistaRepository;
+	private PrestamistasRepository prestamistaRepository;
 
 	@Autowired
-	private RecusadoRepository recusadoRepository;
+	private RecusadosRepository recusadosRepository;
 
 	private static String fileName;
 
 	@RequestMapping(value = "/prestamistas", method = RequestMethod.POST)
-	@ResponseStatus(HttpStatus.CREATED)
+	@ResponseStatus(HttpStatus.OK)
 	public @ResponseBody String showPrestamistas() {
+
+		BigDecimal highlimit = new BigDecimal("400000");
+		BigDecimal mediumlimit = new BigDecimal("20000");
+		BigDecimal lowlimit = new BigDecimal("2000");
 
 		Date today = new Date();
 		GregorianCalendar gc = new GregorianCalendar();
@@ -53,46 +58,19 @@ public class PrestamistaController {
 		SimpleDateFormat sdfout = new SimpleDateFormat("dd-MM-yyyy");
 
 		String dateout = sdfout.format(today);
-		
+
 		fileName = "/root/dados/ftp/prestamistas/Prestamistas_" + dateout + ".xls";
 
-		// int totalpsc = 0;
-		boolean addtolist = true;
+		List<Prestamistas> prestamistas = new ArrayList<Prestamistas>();
+		prestamistas = prestamistaRepository.findAll();
 
-		List<Prestamista> prestamistas = new ArrayList<Prestamista>();
-		prestamistas = prestamistaRepository.getCliComContrato();
-
-		List<Prestamista> prestamistassemcontrato = new ArrayList<Prestamista>();
-		prestamistassemcontrato = prestamistaRepository.getCliSemContrato();
-
-		// for(Prestamista pc : prestamistassemcontrato){
-		// System.out.println(pc.getDESCNOMECLIENTE());}
-
-		List<Recusado> recusados = new ArrayList<Recusado>();
-		recusados = recusadoRepository.getRecusados();
-
-		// Merge prestamistascomcontrato com prestamistassemcontrato
-		for (Prestamista psc : prestamistassemcontrato) {
-			addtolist = true;
-			for (Prestamista p : prestamistas) {
-				if (p.getNUMCPFCNPJ().equals(psc.getNUMCPFCNPJ())) {
-					addtolist = false;
-					break;
-				}
-			}
-			if (addtolist == true) {
-				// System.out.println(psc.getDESCNOMECLIENTE() + " - " +
-				// psc.getVALORLIMITE());
-				prestamistas.add(psc);
-				// totalpsc++;
-			}
-		}
+		List<Recusados> recusados = new ArrayList<Recusados>();
+		recusados = recusadosRepository.findAll();
 
 		// Remove Recusados
-		for (Recusado r : recusados) {
-			for (Prestamista p : prestamistas) {
-				if (p.getNUMCPFCNPJ().equals(r.getNUMCPFCNPJ())) {
-					System.out.println("Recusado: " + p.getDESCNOMECLIENTE() + ", " + p.getNUMCPFCNPJ());
+		for (Recusados r : recusados) {
+			for (Prestamistas p : prestamistas) {
+				if (p.getNumcpfcnpj().equals(r.getNUMCPFCNPJ())) {
 					prestamistas.remove(p);
 					break;
 				}
@@ -101,28 +79,28 @@ public class PrestamistaController {
 
 		// Corrigir titulares de conta conjunta
 		int breakpoint = 0;
-		for (Prestamista p : prestamistas) {
+		for (Prestamistas p : prestamistas) {
 			if (breakpoint >= 2) {
 				break;
 			}
-			if (p.getNUMCPFCNPJ().equals("41592085172")) {
+			if (p.getNumcpfcnpj().equals("41592085172")) {
 				GregorianCalendar gc2 = new GregorianCalendar();
 				Date datatc = new Date();
-				p.setDESCNOMECLIENTE("ELSIENI COELHO DA SILVA E OU");
+				p.setDescnomecliente("ELSIENI COELHO DA SILVA E OU");
 				gc2.set(1967, 05, 14);
 				datatc = gc2.getTime();
-				p.setDATANASCIMENTO(datatc);
-				p.setNUMCPFCNPJ("48510785600");
+				p.setDatanascimento(datatc);
+				p.setNumcpfcnpj("48510785600");
 				breakpoint++;
 			}
-			if (p.getNUMCPFCNPJ().equals("48514675672")) {
+			if (p.getNumcpfcnpj().equals("48514675672")) {
 				GregorianCalendar gc2 = new GregorianCalendar();
 				Date datatc = new Date();
-				p.setDESCNOMECLIENTE("OSVALDO SOUZA PINA DE CAMPOS E OU");
+				p.setDescnomecliente("OSVALDO SOUZA PINA DE CAMPOS E OU");
 				gc2.set(1966, 10, 18);
 				datatc = gc2.getTime();
-				p.setDATANASCIMENTO(datatc);
-				p.setNUMCPFCNPJ("64066240682");
+				p.setDatanascimento(datatc);
+				p.setNumcpfcnpj("64066240682");
 				breakpoint++;
 			}
 		}
@@ -167,13 +145,15 @@ public class PrestamistaController {
 
 		// Prestamistas
 		// -------------------------------------------------------------------------------------------------------
-		for (Prestamista p : prestamistas) {
+		for (Prestamistas p : prestamistas) {
 
-			long d1 = p.getDATANASCIMENTO().getTime();
+			BigDecimal numcontasbd = new BigDecimal(p.getNumcontas());
+			BigDecimal valorlimitebd = new BigDecimal(p.getValorlimite());
+			long d1 = p.getDatanascimento().getTime();
 			long d2 = gc.getTime().getTime();
 			long age = Math.abs((d1 - d2) / (1000 * 60 * 60 * 24)) / 365;
 
-			if (p.getCODTIPOSITUACAOTITULO() == 2 && p.getVALORLIMITE() == 0 || age >= 81) {
+			if (p.getCodtiposituacaotitulo() == 2 && p.getValorlimite() == 0 || age >= 81) {
 				continue;
 			}
 
@@ -183,34 +163,34 @@ public class PrestamistaController {
 			cellnum = 0;
 
 			Cell cellnome = rowp.createCell(cellnum++);
-			cellnome.setCellValue(p.getDESCNOMECLIENTE());
+			cellnome.setCellValue(p.getDescnomecliente());
 
 			Cell celldatanasc = rowp.createCell(cellnum++);
-			celldatanasc.setCellValue(sdfnasc.format(p.getDATANASCIMENTO()));
-			
-			gc.set(Calendar.MONTH, gc.get(Calendar.MONTH)-1);
-			
-			String month = String.format("%02d", gc.get(Calendar.MONTH)+1);			
-			
-			Cell cellinivig = rowp.createCell(cellnum++);
-			cellinivig.setCellValue("0" + String.valueOf(gc.getMinimum(Calendar.DAY_OF_MONTH)).concat("/" + String
-					.valueOf(month).concat("/" + String.valueOf(gc.get(Calendar.YEAR)))));			
-			
-			Cell cellfimvig = rowp.createCell(cellnum++);
-			cellfimvig.setCellValue(String.valueOf(gc.getActualMaximum(Calendar.DAY_OF_MONTH)).concat("/" + String
-					.valueOf(month).concat("/" + String.valueOf(gc.get(Calendar.YEAR)))));
+			celldatanasc.setCellValue(sdfnasc.format(p.getDatanascimento()));
 
-			gc.set(Calendar.MONTH, gc.get(Calendar.MONTH)+1);
-			
+			gc.set(Calendar.MONTH, gc.get(Calendar.MONTH) - 1);
+
+			String month = String.format("%02d", gc.get(Calendar.MONTH) + 1);
+
+			Cell cellinivig = rowp.createCell(cellnum++);
+			cellinivig.setCellValue("0" + String.valueOf(gc.getMinimum(Calendar.DAY_OF_MONTH))
+					.concat("/" + String.valueOf(month).concat("/" + String.valueOf(gc.get(Calendar.YEAR)))));
+
+			Cell cellfimvig = rowp.createCell(cellnum++);
+			cellfimvig.setCellValue(String.valueOf(gc.getActualMaximum(Calendar.DAY_OF_MONTH))
+					.concat("/" + String.valueOf(month).concat("/" + String.valueOf(gc.get(Calendar.YEAR)))));
+
+			gc.set(Calendar.MONTH, gc.get(Calendar.MONTH) + 1);
+
 			Cell cellop = rowp.createCell(cellnum++);
-			if (p.getCODTIPOSITUACAOTITULO() == 1) {
+			if (p.getCodtiposituacaotitulo() == 1) {
 				cellop.setCellValue(2);
 			} else {
 				cellop.setCellValue(1);
 			}
 
 			// Set CPF
-			String scpf = p.getNUMCPFCNPJ();
+			String scpf = p.getNumcpfcnpj();
 			String p1 = scpf.substring(0, 3).concat(".");
 			String p2 = scpf.substring(3, 6).concat(".");
 			String p3 = scpf.substring(6, 9).concat("-");
@@ -220,30 +200,30 @@ public class PrestamistaController {
 			cellcpf.setCellValue(scpf);
 
 			Cell cellcs = rowp.createCell(cellnum++);
-			// System.out.println(p.getDESCNOMECLIENTE() + " - " +
-			// p.getVALORLIMITE());
-			if (p.getCODTIPOSITUACAOTITULO() == 2) {
-				if (age < 66 && p.getVALORLIMITE() > 400000) {
-					p.setVALORLIMITE(400000l);
-				} else if (age >= 66 && age < 76 && p.getVALORLIMITE() > 20000) {
-					p.setVALORLIMITE(20000l);
-				} else if (age >= 76 && age < 81 && p.getVALORLIMITE() > 2000) {
-					p.setVALORLIMITE(2000l);
+
+			if (p.getCodtiposituacaotitulo() == 2) {
+				if (age < 66 && p.getValorlimite() > 400000) {
+					p.setValorlimite(400000l);
+				} else if (age >= 66 && age < 76 && p.getValorlimite() > 20000) {
+					p.setValorlimite(20000l);
+				} else if (age >= 76 && age < 81 && p.getValorlimite() > 2000) {
+					p.setValorlimite(2000l);
 				}
-				cellcs.setCellValue(p.getVALORLIMITE());
+				cellcs.setCellValue(p.getValorlimite());
 				cellcs.setCellStyle(stylecs);
 
 			} else {
-				p.setCAPITALSEGURADO((p.getCAPITALSEGURADO() / p.getNUMCONTAS()) + p.getVALORLIMITE());
+				p.setCapitalsegurado((p.getCapitalsegurado().divide(numcontasbd)).add(valorlimitebd));
 
-				if (age < 66 && p.getCAPITALSEGURADO() > 400000.0) {
-					p.setCAPITALSEGURADO(400000.0);
-				} else if (age >= 66 && age < 76 && p.getCAPITALSEGURADO() > 20000.0) {
-					p.setCAPITALSEGURADO(20000.0);
-				} else if (age >= 76 && age < 81 && p.getCAPITALSEGURADO() > 2000.0) {
-					p.setCAPITALSEGURADO(2000.0);
+				if (age < 66 && p.getCapitalsegurado().compareTo(highlimit) > 0) {
+					p.setCapitalsegurado(highlimit);
+				} else if (age >= 66 && age < 76 && p.getCapitalsegurado().compareTo(mediumlimit) > 0) {
+					p.setCapitalsegurado(mediumlimit);
+				} else if (age >= 76 && age < 81 && p.getCapitalsegurado().compareTo(lowlimit) > 0) {
+					p.setCapitalsegurado(lowlimit);
 				}
-				cellcs.setCellValue(p.getCAPITALSEGURADO());
+				double d = p.getCapitalsegurado().doubleValue();
+				cellcs.setCellValue(d);
 				cellcs.setCellStyle(stylecs);
 			}
 
@@ -254,7 +234,7 @@ public class PrestamistaController {
 		try
 
 		{
-			FileOutputStream out = new FileOutputStream(new File(PrestamistaController.fileName));
+			FileOutputStream out = new FileOutputStream(new File(PrestamistasController.fileName));
 			workbook.write(out);
 			out.close();
 			System.out.println("Arquivo Excel criado com sucesso!");

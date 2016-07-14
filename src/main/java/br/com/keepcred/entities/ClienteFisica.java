@@ -13,40 +13,40 @@ public class ClienteFisica {
 
 	@Id
 	@Column
-	private Long IDCLIENTE;
-	
+	private Long idcliente;
+
 	@Column
-	private Date DATANASCIMENTO;
+	private Date datanascimento;
 
 	public ClienteFisica() {
 		super();
 	}
 
-	public ClienteFisica(Long iDCLIENTE, Date dATANASCIMENTO) {
+	public ClienteFisica(Long idcliente, Date datanascimento) {
 		super();
-		IDCLIENTE = iDCLIENTE;
-		DATANASCIMENTO = dATANASCIMENTO;
+		this.idcliente = idcliente;
+		this.datanascimento = datanascimento;
 	}
 
-	public Long getIDCLIENTE() {
-		return IDCLIENTE;
+	public Long getIdcliente() {
+		return idcliente;
 	}
 
-	public void setIDCLIENTE(Long iDCLIENTE) {
-		IDCLIENTE = iDCLIENTE;
+	public void setIdcliente(Long idcliente) {
+		this.idcliente = idcliente;
 	}
 
-	public Date getDATANASCIMENTO() {
-		return DATANASCIMENTO;
+	public Date getDatanascimento() {
+		return datanascimento;
 	}
 
-	public void setDATANASCIMENTO(Date dATANASCIMENTO) {
-		DATANASCIMENTO = dATANASCIMENTO;
+	public void setDatanascimento(Date datanascimento) {
+		this.datanascimento = datanascimento;
 	}
 
 	@Override
 	public String toString() {
-		return "ClienteFisica [IDCLIENTE=" + IDCLIENTE + ", DATANASCIMENTO=" + DATANASCIMENTO + "]";
+		return "ClienteFisica [idcliente=" + idcliente + ", datanascimento=" + datanascimento + "]";
 	}
 
 }

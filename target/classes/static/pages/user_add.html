@@ -3,22 +3,28 @@
 <meta name="author" content="JotaDev" />
 
 <div class="container" data-ng-controller="usersController">
-	<form class="form-horizontal" data-ng-submit="register() ">
-		<br>
-		<h3>{{titleAdd}}</h3>
-		<br>
+	<form class="form-horizontal" data-ng-submit="register()"
+		autocomplete="off">
+
+		<br/>
+		<h2>Cadastrar Usuário</h2>
+		<br/>
+
 		<div class="form-group">
 			<label class="control-label col-xs-1" for="user">Usuário:</label>
 			<div class="col-xs-5">
-				<input type="text" class="form-control" id="user"
-					data-ng-model="newUser.username" lower-case placeholder="Nome" />
+				<input type="text" class="form-control"
+					oninvalid="InvalidMsg(this);" required="required" id="user"
+					data-ng-model="newUser.username" lower-case placeholder="Nome"
+					autofocus="autofocus" />
 			</div>
 		</div>
 
 		<div class="form-group">
 			<label class="control-label col-xs-1" for="password">Senha:</label>
 			<div class="col-xs-2">
-				<input type="password" class="form-control" id="password"
+				<input type="password" class="form-control"
+					oninvalid="InvalidMsg(this);" required="required" id="password"
 					data-ng-model="newUser.password" placeholder="Senha" />
 			</div>
 		</div>
@@ -26,30 +32,35 @@
 		<hr style="border-top: 1px solid #ccc;" />
 
 		<div class="form-group">
-			<label class="control-label col-xs-1">Autoridade:</label>
+			<label class="control-label col-xs-1" for="authority">Autoridade:</label>
 			<div class="col-xs-2">
-				<select class="form-control" class="form-control"
+				<select name="authority" oninvalid="InvalidMsg(this);" required
+					class="form-control" class="form-control"
 					data-ng-model="newUser.user_role_id"
-					data-ng-options="users.user_role_id as users.role for users in userRolesList"></select>
+					data-ng-options="users.user_role_id as users.role for users in userRolesList"><option
+						value="">Selecionar</option></select>
 			</div>
 		</div>
 
 		<div class="form-group">
-			<label class="control-label col-xs-1">Grupo:</label>
+			<label class="control-label col-xs-1" for="group">Grupo:</label>
 			<div class="col-xs-2">
-				<select class="form-control" data-ng-model="newUser.group_id"
-					data-ng-options="users.group_id as users.groupname for users in groupsList"></select>
+				<select name="group" oninvalid="InvalidMsg(this);" required
+					class="form-control" data-ng-model="newUser.group_id"
+					data-ng-options="users.group_id as users.groupname for users in groupsList"><option
+						value="">Selecionar</option></select>
 			</div>
 		</div>
+
+		<br>
 
 		<div class="form-group">
-			<div class="col-xs-9">
+			<a href="#user_list" class="col-xs-1"><button type="button"
+					class="btn btn-default">Voltar</button></a>
+			<div>
 				<input type="submit" id="register" class="btn btn-primary"
-					value="Registrar">
+					value="Cadastrar">
 			</div>
-			<a href="#user_list"><button type="button"
-					class="btn btn-success" style="margin-left: 10px;">Voltar</button></a>
 		</div>
-
 	</form>
 </div>

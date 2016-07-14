@@ -7,13 +7,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.keepcred.entities.Users;
-import br.com.keepcred.repositories.UserRepository;
+import br.com.keepcred.repositories.UsersRepository;
 
 @Service
-public class UserService {
+public class UsersService {
 
 	@Autowired
-	private UserRepository userRepository;
+	private UsersRepository userRepository;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;

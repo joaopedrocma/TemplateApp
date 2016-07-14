@@ -11,52 +11,52 @@ public class ClienteInstunidade {
 
 	@Id
 	@Column
-	private Long IDCLIENTE;
+	private Long idcliente;
 
 	@Column
-	private String DESCNOMECLIENTE;
+	private String descnomecliente;
 
 	@Column
-	private String NUMCPFCNPJ;
+	private String numcpfcnpj;
 
 	public ClienteInstunidade() {
 		super();
 	}
 
-	public ClienteInstunidade(Long iDCLIENTE, String dESCNOMECLIENTE, String nUMCPFCNPJ) {
+	public ClienteInstunidade(Long idcliente, String descnomecliente, String numcpfcnpj) {
 		super();
-		IDCLIENTE = iDCLIENTE;
-		DESCNOMECLIENTE = dESCNOMECLIENTE;
-		NUMCPFCNPJ = nUMCPFCNPJ;
+		this.idcliente = idcliente;
+		this.descnomecliente = descnomecliente;
+		this.numcpfcnpj = numcpfcnpj;
 	}
 
-	public Long getIDCLIENTE() {
-		return IDCLIENTE;
+	public Long getIdcliente() {
+		return idcliente;
 	}
 
-	public void setIDCLIENTE(Long iDCLIENTE) {
-		IDCLIENTE = iDCLIENTE;
+	public void setIdcliente(Long idcliente) {
+		this.idcliente = idcliente;
 	}
 
-	public String getDESCNOMECLIENTE() {
-		return DESCNOMECLIENTE;
+	public String getDescnomecliente() {
+		return descnomecliente;
 	}
 
-	public void setDESCNOMECLIENTE(String dESCNOMECLIENTE) {
-		DESCNOMECLIENTE = dESCNOMECLIENTE;
+	public void setDescnomecliente(String descnomecliente) {
+		this.descnomecliente = descnomecliente;
 	}
 
-	public String getNUMCPFCNPJ() {
-		return NUMCPFCNPJ;
+	public String getNumcpfcnpj() {
+		return numcpfcnpj;
 	}
 
-	public void setNUMCPFCNPJ(String nUMCPFCNPJ) {
-		NUMCPFCNPJ = nUMCPFCNPJ;
+	public void setNumcpfcnpj(String numcpfcnpj) {
+		this.numcpfcnpj = numcpfcnpj;
 	}
 
 	@Override
 	public String toString() {
-		return "ClienteInstunidade [IDCLIENTE=" + IDCLIENTE + ", DESCNOMECLIENTE=" + DESCNOMECLIENTE + ", NUMCPFCNPJ="
-				+ NUMCPFCNPJ + "]";
+		return "ClienteInstunidade [idcliente=" + idcliente + ", descnomecliente=" + descnomecliente + ", numcpfcnpj="
+				+ numcpfcnpj + "]";
 	}
 }
