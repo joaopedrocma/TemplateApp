@@ -1,5 +1,7 @@
 package br.com.keepcred.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,12 +9,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "spu_cco_participantecontacor")
-public class ParticipanteContaCor {
+public class ParticipanteContaCor implements Serializable {
 
-	@Id
+	private static final long serialVersionUID = 2687726501378592706L;
+
 	@Column
 	private Long idcliente;
 
+	@Id
 	@Column
 	private Long numcontacorrente;
 

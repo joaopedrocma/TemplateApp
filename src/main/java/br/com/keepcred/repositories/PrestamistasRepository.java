@@ -9,17 +9,17 @@ import br.com.keepcred.entities.Prestamistas;
 
 public interface PrestamistasRepository extends JpaRepository<Prestamistas, Long> {
 
-	@Query(value = "select b.DESCNOMECLIENTE, b.NUMCPFCNPJ, a.DATANASCIMENTO, MIN(e.CODTIPOSITUACAOTITULO) as CODTIPOSITUACAOTITULO, "
-			+ "count(distinct c.NUMCONTACORRENTE) as NUMCONTAS, MAX(coalesce(d.VALORLIMITE, 0)) as VALORLIMITE, "
-			+ "sum(case when CODTIPOSITUACAOTITULO = 1 then e.VALORSALDODEVEDORCONTABIL else 0 end) as CAPITALSEGURADO "
-			+ "from spu_cli_clientefisica a, spu_cli_clienteinstunidade b, spu_cco_participantecontacor c LEFT JOIN spu_cco_limitecredito d ON d.NUMCONTACORRENTE = c.NUMCONTACORRENTE, "
-			+ "spu_cre_contratocredito e where a.IDCLIENTE = b.IDCLIENTE and a.IDCLIENTE = c.IDCLIENTE and a.IDCLIENTE = e.IDCLIENTE "
-			+ "group by a.IDCLIENTE order by b.DESCNOMECLIENTE", nativeQuery = true)
+	@Query(value = "SELECT b.descnomecliente, b.numcpfcnpj, a.datanascimento, MIN(e.codtiposituacaotitulo) AS codtiposituacaotitulo, "
+			+ "COUNT(DISTINCT c.numcontacorrente) AS numcontas, MAX(coalesce(d.valorlimite, 0)) AS valorlimite, "
+			+ "SUM(CASE WHEN codtiposituacaotitulo = 1 THEN e.valorsaldodevedorcontabil ELSE 0 END) AS capitalsegurado "
+			+ "FROM spu_cli_clientefisica a, spu_cli_clienteinstunidade b, spu_cco_participantecontacor c LEFT JOIN spu_cco_limitecredito d ON d.numcontacorrente = c.numcontacorrente, "
+			+ "spu_cre_contratocredito e WHERE a.idcliente = b.idcliente AND a.idcliente = c.idcliente AND a.idcliente = e.idcliente "
+			+ "GROUP BY a.idcliente ORDER BY b.descnomecliente", nativeQuery = true)
 	List<Prestamistas> getPrestamistasComContrato();
 
-	@Query(value = "SELECT b.DESCNOMECLIENTE, b.NUMCPFCNPJ, a.DATANASCIMENTO, d.VALORLIMITE, 0.0 as CAPITALSEGURADO, 1 as NUMCONTAS, 2 as CODTIPOSITUACAOTITULO "
-			+ "FROM spu_cli_clientefisica a, spu_cli_clienteinstunidade b, spu_cco_participantecontacor c LEFT JOIN spu_cco_limitecredito d ON d.NUMCONTACORRENTE = c.NUMCONTACORRENTE "
-			+ "where a.IDCLIENTE = b.IDCLIENTE and a.IDCLIENTE = c.IDCLIENTE and d.VALORLIMITE > 0 group by b.IDCLIENTE", nativeQuery = true)
+	@Query(value = "SELECT b.descnomecliente, b.numcpfcnpj, a.datanascimento, d.valorlimite, 0.0 AS capitalsegurado, 1 AS NUMCONTAS, 2 AS codtiposituacaotitulo "
+			+ "FROM spu_cli_clientefisica a, spu_cli_clienteinstunidade b, spu_cco_participantecontacor c LEFT JOIN spu_cco_limitecredito d ON d.numcontacorrente = c.numcontacorrente "
+			+ "WHERE a.idcliente = b.idcliente AND a.idcliente = c.idcliente AND d.valorlimite > 0 GROUP BY b.idcliente", nativeQuery = true)
 	List<Prestamistas> getPrestamistasSemContrato();
 
 }

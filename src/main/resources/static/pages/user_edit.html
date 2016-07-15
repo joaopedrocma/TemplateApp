@@ -8,7 +8,8 @@
 
 		<br/>
 		<h2>Editar Usuário</h2>
-
+{{usersList}}
+{{updateUser}}
 		<div class="form-group">
 			<label class="control-label col-xs-1" for="username">Usuário:</label>
 			<div class="col-xs-5">
@@ -23,8 +24,8 @@
 			<label class="control-label col-xs-1" for="enabled">Ativo:</label>
 			<div class="col-xs-2">
 				<select name="enabled" oninvalid="InvalidMsg(this);" required
-					class="form-control" class="form-control"
-					data-ng-model="updateUser.enabled"><option value="" selected="selected">Selecionar</option>
+					class="form-control" class="form-control" data-ng-init="enabled=Sim"
+					data-ng-model="updateUser.enabled" data-ng-options="boolToStr(enabled) for enabled in [true, false]"><option value="" >Selecionar</option>
 					<option value="1">Sim</option>
 					<option value="0">Não</option></select>
 			</div>

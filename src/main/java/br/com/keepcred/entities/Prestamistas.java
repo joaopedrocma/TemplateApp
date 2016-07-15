@@ -1,15 +1,20 @@
 package br.com.keepcred.entities;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-public class Prestamistas {
+@Table(name = "prestamista")
+public class Prestamistas implements Serializable {
+
+	private static final long serialVersionUID = -4986961620925186628L;
 
 	@Id
 	@Column
@@ -25,7 +30,7 @@ public class Prestamistas {
 	private Long valorlimite;
 
 	@Column
-	private Integer codtiposituacaotitulo;
+	private Short codtiposituacaotitulo;
 
 	@Column
 	private BigDecimal capitalsegurado;
@@ -40,16 +45,16 @@ public class Prestamistas {
 		super();
 	}
 
-	public Prestamistas(String numcpfcnpj, Date datanascimento, String descnomecliente, Integer numcontas,
-			Long valorlimite, Integer codtiposituacaotitulo, BigDecimal capitalsegurado) {
+	public Prestamistas(String numcpfcnpj, Date datanascimento, String descnomecliente, Long valorlimite,
+			Short codtiposituacaotitulo, BigDecimal capitalsegurado, Integer numcontas) {
 		super();
 		this.numcpfcnpj = numcpfcnpj;
 		this.datanascimento = datanascimento;
 		this.descnomecliente = descnomecliente;
-		this.numcontas = numcontas;
 		this.valorlimite = valorlimite;
 		this.codtiposituacaotitulo = codtiposituacaotitulo;
 		this.capitalsegurado = capitalsegurado;
+		this.numcontas = numcontas;
 	}
 
 	public String getNumcpfcnpj() {
@@ -76,14 +81,6 @@ public class Prestamistas {
 		this.descnomecliente = descnomecliente;
 	}
 
-	public Integer getNumcontas() {
-		return numcontas;
-	}
-
-	public void setNumcontas(Integer numcontas) {
-		this.numcontas = numcontas;
-	}
-
 	public Long getValorlimite() {
 		return valorlimite;
 	}
@@ -92,11 +89,11 @@ public class Prestamistas {
 		this.valorlimite = valorlimite;
 	}
 
-	public Integer getCodtiposituacaotitulo() {
+	public Short getCodtiposituacaotitulo() {
 		return codtiposituacaotitulo;
 	}
 
-	public void setCodtiposituacaotitulo(Integer codtiposituacaotitulo) {
+	public void setCodtiposituacaotitulo(Short codtiposituacaotitulo) {
 		this.codtiposituacaotitulo = codtiposituacaotitulo;
 	}
 
@@ -108,11 +105,19 @@ public class Prestamistas {
 		this.capitalsegurado = capitalsegurado;
 	}
 
+	public Integer getNumcontas() {
+		return numcontas;
+	}
+
+	public void setNumcontas(Integer numcontas) {
+		this.numcontas = numcontas;
+	}
+
 	@Override
 	public String toString() {
 		return "Prestamistas [numcpfcnpj=" + numcpfcnpj + ", datanascimento=" + datanascimento + ", descnomecliente="
-				+ descnomecliente + ", numcontas=" + numcontas + ", valorlimite=" + valorlimite
-				+ ", codtiposituacaotitulo=" + codtiposituacaotitulo + ", capitalsegurado=" + capitalsegurado + "]";
+				+ descnomecliente + ", valorlimite=" + valorlimite + ", codtiposituacaotitulo=" + codtiposituacaotitulo
+				+ ", capitalsegurado=" + capitalsegurado + ", numcontas=" + numcontas + "]";
 	}
 
 }

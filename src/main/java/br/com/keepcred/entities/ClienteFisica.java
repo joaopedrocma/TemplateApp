@@ -1,5 +1,6 @@
 package br.com.keepcred.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -9,7 +10,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "spu_cli_clientefisica")
-public class ClienteFisica {
+public class ClienteFisica implements Serializable {
+
+	private static final long serialVersionUID = 427776964113945743L;
 
 	@Id
 	@Column

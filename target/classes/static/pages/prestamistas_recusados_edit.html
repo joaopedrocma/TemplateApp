@@ -2,50 +2,51 @@
 <meta name="description" content="Prestamistas_Recusados_Edit" />
 <meta name="author" content="JotaDev" />
 
-<div class="container" data-ng-controller="recusadosListController">
-	<form data-ng-submit="update() " data-ng-init="init()">
-		<fieldset>
-			<legend> Editar Recusado </legend>
-			<br /> <br /> <br />
+<div class="container"
+	data-ng-controller="prestamistasRecusadosController">
+	<form class="form-horizontal" data-ng-submit="update() "
+		data-ng-init="init()">
 
-			<div class="form-group">
-				<div class="col-xs-9">
-					<label class="control-label" for="nome">Nome:</label> <input
-						class="form-control" type="text" name="nome" id="nome"
-						data-ng-model="updateRecusado.descnomecliente" disabled=disabled
-						placeholder="Novo Nome do Recusado" /><br />
-				</div>
-			</div>
+		<h2>Editar Recusado</h2>
+		<br /> <br />
 
-			<div class="form-group">
-				<div class="col-xs-9">
-					<label class="control-label" for="cpf">CPF:</label> <input
-						class="form-control" type="text" name="cpf" id="cpf"
-						data-ng-model="updateRecusado.numcpfcnpj" disabled=disabled
-						placeholder="Novo CPF do Recusado" /><br />
-				</div>
+		<div class="form-group">
+			<label class="control-label col-xs-1" for="nome">Nome:</label>
+			<div class="col-xs-5">
+				<input class="form-control" type="text" name="nome" id="nome"
+					data-ng-model="updateRecusado.descnomecliente" disabled=disabled /><br />
 			</div>
+		</div>
 
-			<div class="form-group">
-				<div class="col-xs-9">
-					<label class="control-label" for="situacao">Situação:</label> <select
-						data-ng-model="updateRecusado.situacao"
-						data-ng-options="value.id as value.name for value in statusTypes"></select><br />
-				</div>
+		<div class="form-group">
+			<label class="control-label col-xs-1" for="cpf">CPF:</label>
+			<div class="col-xs-5">
+				<input class="form-control" type="text" name="cpf" id="cpf"
+					data-ng-model="updateRecusado.numcpfcnpj" disabled=disabled /><br />
 			</div>
-		</fieldset>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-xs-1" for="situacao">Situação:</label>
+			<div class="col-xs-2">
+				<select name="situacao" oninvalid="InvalidMsg(this);" required
+					class="form-control" data-ng-model="updateRecusado.situacao"
+					data-ng-options="value.id as value.name for value in statusTypes"></select><br />
+			</div>
+		</div>
+
 
 		<br />
 
 		<div class="form-group">
-			<div class="col-xs-9">
-				<input type="submit" id="edit" class="btn btn-primary"
-					value="Confirmar" /><a
-					data-ng-click="deleteRecusado(updateRecusado.idcliente)"
-					class="btn btn-small btn-danger" style="float: right;">Reativar
-					Recusado</a>
-			</div>
-		</div>
+			<a href="#prestamistas_recusados_list" class="col-xs-1"><button
+					type="button" class="btn btn-default">Voltar</button></a> <input
+				type="submit" id="edit" class="btn btn-primary" value="Confirmar" />
 
+			<button type="button"
+				data-ng-click="deleteRecusado(updateRecusado.idcliente)"
+				class="btn btn-small btn-danger" style="margin-left: 235px;">Reativar
+				Recusado</button>
+		</div>
 	</form>
 </div>

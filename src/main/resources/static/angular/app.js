@@ -31,14 +31,24 @@ keepcred.config(function($routeProvider) {
 
 	.when('/prestamistas_list', {
 		templateUrl : 'pages/prestamistas_list.html',
-		controller : 'prestamistasListController'
+		controller : 'prestamistasController'
 	})
 
+		.when('/prestamistas_recusados_add/:id', {
+		templateUrl : 'pages/prestamistas_recusados_add.html',
+		controller : 'prestamistasController'
+	})
+	
 	.when('/prestamistas_recusados_list', {
 		templateUrl : 'pages/prestamistas_recusados_list.html',
-		controller : 'prestamistasRecusadosListController'
+		controller : 'prestamistasRecusadosController'
 	})
 
+	.when('/prestamistas_recusados_edit/:id', {
+		templateUrl : 'pages/prestamistas_recusados_edit.html',
+		controller : 'prestamistasRecusadosController'
+	})
+	
 	.when('/user_list', {
 		templateUrl : 'pages/user_list.html',
 		controller : 'usersController'
@@ -52,15 +62,5 @@ keepcred.config(function($routeProvider) {
 	.when('/user_edit/:id', {
 		templateUrl : 'pages/user_edit.html',
 		controller : 'usersController'
-	})
-
-	.when('/prestamistas_recusados_add/:id', {
-		templateUrl : 'pages/prestamistas_recusados_add.html',
-		controller : 'prestamistasListController'
-	})
-
-	.when('/prestamistas_recusados_edit/:id', {
-		templateUrl : 'pages/prestamistas_recusados_edit.html',
-		controller : 'recusadosListController'
 	})
 });

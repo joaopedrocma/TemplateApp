@@ -22,6 +22,8 @@ keepcred
 					$scope.groupsList = Groups.query();
 					$scope.groupRolesList = GroupRoles.query();
 					
+					$scope.boolToStr = function(arg) {return arg ? 'Sim' : 'Não'};
+					
 					$scope.refresh = function() {
 						$scope.usersList = Users.query();
 						$scope.userRolesList = UserRoles.query();
@@ -117,7 +119,7 @@ keepcred.controller('generatePrestamistasController', ['$http', '$scope', functi
 
 keepcred
 .controller(
-		'prestamistasListController',
+		'prestamistasController',
 		[
 				'$scope',
 				'$http',
@@ -177,7 +179,7 @@ keepcred
 
 keepcred
 .controller(
-		'prestamistasRecusadosListController',
+		'prestamistasRecusadosController',
 		[
 				'$scope',
 				'$http',
@@ -444,6 +446,29 @@ keepcred.directive('lowerCase', function($parse) {
 			var model = $parse(attrs.ngModel);
 			modelCtrl.$parsers.push(lowerize);
 			lowerize(model(scope));
+		}
+	};
+});
+
+keepcred.directive('upperCase', function($parse) {
+	return {
+		require : 'ngModel',
+		link : function postLink(scope, element, attrs, modelCtrl) {
+			var upperize = function(inputValue) {
+				if (!inputValue) {
+					return inputValue;
+				}
+				var upperize = inputValue.toUpperCase();
+				if (upperize !== inputValue) {
+					modelCtrl.$setViewValue(upperize);
+					modelCtrl.$render();
+				}
+				return upperize;
+			};
+
+			var model = $parse(attrs.ngModel);
+			modelCtrl.$parsers.push(upperize);
+			upperize(model(scope));
 		}
 	};
 });

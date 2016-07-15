@@ -1,5 +1,7 @@
 package br.com.keepcred.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,7 +9,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "spu_cco_limitecredito")
-public class LimiteCredito {
+public class LimiteCredito implements Serializable {
+
+	private static final long serialVersionUID = 6414311092002536143L;
 
 	@Id
 	@Column
