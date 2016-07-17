@@ -23,8 +23,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "br.com.templateapp.repositories")
-@ComponentScan(basePackages = { "br.com.templateapp" })
+@EnableJpaRepositories(basePackages = "br.com.Template.repositories")
+@ComponentScan(basePackages = { "br.com.Template" })
 @PropertySource(value = { "classpath:application.properties" })
 public class PersistenceConfig {
 
@@ -40,7 +40,7 @@ public class PersistenceConfig {
 		LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
 		entityManagerFactoryBean.setDataSource(dataSource);
 		entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-		entityManagerFactoryBean.setPackagesToScan("br.com.templateapp");
+		entityManagerFactoryBean.setPackagesToScan("br.com.Template");
 
 		Properties jpaProperties = new Properties();
 
