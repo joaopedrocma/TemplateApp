@@ -1,0 +1,3 @@
+br/com/template/test/SimpleTest.class
+br/com/template/test/utils/TestContext.class
+br/com/template/test/utils/AbstractTest.class
